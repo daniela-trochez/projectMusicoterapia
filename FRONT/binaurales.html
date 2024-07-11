@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Musicoterapia</title>
+    <style>
+      
+       /* Barra de navegacion y footer*/
+    * {
+      
+      margin: 0;
+      padding: 0;
+    }
+    /* Estilos generales para el cuerpo de la página */
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #fff;
+      flex-direction: column;
+      min-height: 100vh; /* Mínimo alto del cuerpo de la página para ocupar la pantalla completa */
+      margin: 0;
+    }
+
+    /* Estilos del encabezado de la página */
+    .navbar {
+      background-color: #fff;
+      padding: 1em;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #ddd;
+      position: relative; /* Asegura que `z-index` funcione correctamente */
+      z-index: 1000; /* Asegura que esté por encima del resto del contenido */
+    }
+  
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+  
+    .logo img {
+      width: 65px;
+      height: 60px;
+      margin-right: 10px;
+    }
+  
+    .navbar span {
+      color: #59009A;
+      font-weight: bold;
+      margin-right: 20px;
+    }
+  
+    .servicios {
+      position: relative;
+    }
+  
+    .submenu {
+      position: absolute; /* Asegura que esté sobre el contenido */
+      background-color: #fff;
+      padding: 5px 5px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      display: none;
+      top: 40px;
+      left: 0;
+      width: auto;
+      z-index: 1001; /* Asegura que esté por encima del contenido `navbar` */
+    }
+  
+    .servicios:hover .submenu {
+      display: block;
+    }
+  
+    .submenu ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+  
+    .submenu li {
+      padding: 20px;
+      border-bottom: 1px solid #ddd;
+    }
+  
+    .submenu li:hover {
+      background-color: #f0f0f0;
+    }
+  
+    .user-info {
+      display: flex;
+      align-items: center;
+    }
+
+    .imagen-usuario {
+      width: 30px;
+      height: 30px;
+    }
+
+
+      .container {
+        display: flex;
+        height: calc(100vh - 126px);
+        flex: 1;
+      }
+
+      
+      /* INICO DEL MENU FIJO */
+
+      .sidebar {
+        width: 25%;
+        background-color: #c7b7fe49;
+        padding: 8px;
+        padding: 20px;
+      }
+      .sidebar .menu-item {
+        flex: 0 1 25%; /* Flexibilidad del ancho de la sidebar */
+        padding: 12px;
+        margin: 10px 0;
+        background: #fff;
+        border-radius: 15px;
+        transition: background 0.3s ease;
+      }
+      .sidebar .menu-item.active,
+      .sidebar .menu-item:hover {
+        /* background: #e6e9ec; */
+        background: linear-gradient(#ffffff, #9c76c1);
+        box-shadow: 1px 5px 10px 0.1px rgb(145, 145, 145);
+      }
+      .sidebar .menu-item img {
+        width: 24px;
+        height: 24px;
+        margin-right: 10px;
+      }
+      .sidebar .menu-item a {
+        display: flex;
+        align-items: center;
+        color: inherit;
+        text-decoration: none;
+        justify-content: center;
+      }
+      .sidebar .menu-item span {
+        flex-grow: 1;
+        text-align: center;
+        font-size: 16px;
+      }
+      /* fin del Menu fijo */
+    
+
+      .main-content {
+        /* flex: 1; */
+        width: 75%;
+        padding: 20px;
+        overflow-y: auto;
+      }
+      .title {
+        margin-right: 50px;
+        display: flex;
+        align-items: center;
+        font-size: 75px;
+        margin-bottom: 20px;
+        position: relative;
+        margin-left: 100px;
+      }
+      .title::after {
+        content: "";
+        width: 105px;
+        height: 105px;
+        background: linear-gradient(to right, #ae67d7, #3e85e6);
+        position: absolute;
+        right: 55px;
+        border-radius: 50px;
+      }
+      .title span {
+        position: relative;
+        z-index: 1;
+        white-space: nowrap;
+      }
+      .image-container {
+        position: relative;
+        margin-bottom: 40px;
+        display: inline-block; /* Para que el contenedor se ajuste al contenido */
+        text-align: center; /* Centrar contenido */
+      }
+      .image-container img {
+        /*fondo*/
+        width: 100%;
+        height: auto;
+        border-radius: 10px;
+      }
+
+      .corner-text {
+        font-family: Impact, Haettenschweiler, "Arial Narrow", sans-serif;
+        position: absolute;
+        top: 40px; /* Ajusta según sea necesario */
+        left: 20px; /* Ajusta según sea necesario */
+        font-size: 47px; /* Ajusta el tamaño de fuente según sea necesario */
+        color: #59009a; /* Color de letra morado */
+
+        padding: 5px 10px; /* Espacio alrededor del texto */
+        border-radius: 5px; /* Bordes redondeados */
+        z-index: 2; /* Asegura que esté por encima de otros elementos */
+      }
+
+      .bottom-left-text {
+        font-family: Impact, Haettenschweiler, "Arial Narrow", sans-serif;
+        position: absolute;
+        bottom: 50px;
+        left: 20px; /* Ajusta según sea necesario */
+        font-size: 28px; /* Ajusta el tamaño de fuente según sea necesario */
+        color: #000000;
+        padding: 10px; /* Espacio alrededor del texto */
+        border-radius: 5px; /* Bordes redondeados */
+        z-index: 2; /* Asegura que esté por encima de otros elementos */
+      }
+
+      .track-list {
+        max-height: 400px;
+        overflow-y: auto;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        padding: 20px;
+        box-sizing: border-box;
+      }
+
+      .music-item {
+      display: flex;
+      align-items: center;
+      padding: 15px;
+      border-bottom: 1px solid #ccc;
+      font-weight: bold;
+    }
+    .music-item img {
+      width: 60px;
+      height: 60px;
+      margin-right: 15px;
+    }
+    .music-info {
+      flex: 1;
+     
+    }
+    .music-info .titlee {
+      font-size: 16px;
+      font-weight: bold;
+    }
+    .music-info .time {
+      font-size: 14px;
+      color: #ffffff;
+      font-weight: bold;
+    }
+    .herz, .onda {
+      font-size: 16px;
+      flex: 1;
+      text-align: center;
+      color: #ffffff;
+    }
+    .play-button {
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+    .play-button img {
+      width: 30px;
+      height: 30px;
+    }
+
+    /* FOOT */
+   
+    .footer {
+      background-color: #59009A;
+      color: #fff;
+      padding: 35px;
+      display: flex;
+      margin-top: auto;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap; /* Permite que los elementos se envuelvan si no caben en una sola fila */
+    }
+
+    .footer-links {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap; /* Envuelve los elementos si no caben en una sola fila */
+    }
+
+    .contactanos,
+    .canales-atencion,
+    .social-media {
+      display: flex;
+      flex-direction: column; /* Organiza los elementos en columnas */
+      align-items: center; /* Centra los elementos horizontalmente */
+      margin-bottom: 20px; /* Espacio inferior entre las secciones */
+      font-family: 'Roboto Slab', serif; /* Añadido para la fuente */
+    }
+
+    .contactanos span,
+    .canales-atencion span,
+    .social-media span {
+      margin-bottom: 10px; /* Espacio inferior del texto */
+    }
+
+    .imagenes-container {
+      display: flex;
+      align-items: center;
+    }
+
+    .imagen-footer {
+      width: 30px; /* Ancho de las imágenes */
+      height: 30px; /* Altura de las imágenes */
+      transition: transform 0.3s ease, opacity 0.3s ease; /* Transición al pasar el cursor */
+    }
+
+    .imagen-footer:hover {
+      transform: scale(1.2); /* Aumenta ligeramente el tamaño al pasar el cursor */
+      opacity: 0.7; /* Reduce la opacidad al pasar el cursor */
+    }
+
+    .imagen-interactiva {
+      transition: transform 0.3s ease, opacity 0.3s ease; /* Transición al pasar el cursor */
+    }
+
+    .imagen-interactiva:hover {
+      transform: scale(1.2); /* Aumenta ligeramente el tamaño al pasar el cursor */
+      opacity: 0.7; /* Reduce la opacidad al pasar el cursor */
+    }
+
+    .texto-footer {
+      text-align: right;
+      align-items: center;
+      font-family: 'Roboto Slab', serif; /* Añadido para la fuente */
+    }
+
+    /* Estilos para pantallas más pequeñas, como tablets o móviles */
+@media only screen and (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    height: auto; /* Ajustar altura automática */
+  }
+
+  .sidebar {
+    width: 100%; /* Ocupar todo el ancho disponible */
+    margin-bottom: 20px; /* Espacio entre el sidebar y el contenido principal */
+    padding: 8px 16px;
+  }
+  
+
+  .main-content {
+    width: 100%; /* Ocupar todo el ancho disponible */
+    
+  }
+
+  .image-container {
+    margin-left: 0; /* Ajustar el margen izquierdo */
+   
+    margin-left: 0;
+    text-align: left; /* Centrar el contenido */
+  
+  }
+  .corner-text {
+    font-size: 1.5em; /* Reducir tamaño de fuente para pantallas pequeñas */
+    top: 10px;
+    left: 10px;
+  }
+
+  .bottom-left-text {
+    font-size: 1em; /* Reducir tamaño de fuente para pantallas pequeñas */
+    bottom: 10px;
+    left: 10px;
+  }
+
+  .title {
+    font-size: 35px; /* Reducir el tamaño del título */
+    margin-left: 20px; /* Ajustar el margen izquierdo */
+    text-align: center;
+  }
+
+  .footer {
+    flex-direction: column; /* Cambia la dirección a columna en pantallas pequeñas */
+    text-align: center; /* Centra el contenido del footer en pantallas pequeñas */
+  }
+}
+
+
+
+  
+      
+    </style>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="logo">
+        <img src="img/logo.png" alt="Logo de Atención Profesional">
+        <span>Musicoterapia</span>
+      </div>
+      <div class="servicios">
+        <span id="servicios-button">Servicios</span>
+        <div class="submenu">
+          <ul>
+            <li>Biblioterapia</li>
+            <li>Arteterapia</li>
+            <li>Musicoterapia</li>
+            <li>Ejercicios</li>
+          </ul>
+        </div>
+      </div>
+      <div class="user-info">
+        <span>Juanito Alimaña</span>
+        <img class="imagen-usuario" src="img/user.png" alt="Foto de perfil del usuario">
+      </div>
+    </nav>
+    <div class="container">
+      <aside class="sidebar">
+        <div class="menu-item">
+          <a href="#">
+            <img src="img/genero.png" alt="Icon" />
+            <span>Géneros</span>
+          </a>
+        </div>
+        <div class="menu-item">
+          <a href="#">
+            <img src="img/album.png" alt="Icon" />
+            <span href="#">Álbum</span>
+          </a>
+        </div>
+        <div class="menu-item">
+          <a href="#">
+            <img src="img/pod.png" alt="Icon" />
+            <span href="#">Podcast</span>
+          </a>
+        </div>
+        <div class="menu-item">
+          <a href="patologias.html">
+            <img src="img/patologia.png" alt="Icon" />
+            <span href="#">Patologías</span>
+          </a>
+        </div>
+        <div class="menu-item active">
+          <a href="binaurales.html">
+            <img src="img/binaural.png" alt="Icon" />
+            <span>Sonidos Binaurales</span>
+          </a>
+        </div>
+        <div class="menu-item">
+          <a href="playList.html">
+            <img src="img/playL.png" alt="Icon" />
+            <span>PlayList</span>
+          </a>
+        </div>
+        <div class="menu-item">
+          <a href="#">
+            <img src="img/like.png" alt="Icon" />
+            <span>Me gusta</span>
+          </a>
+        </div>
+        <!-- AGREGAR ....BUSCAR -->
+        <div class="menu-item">
+          <a href="buscar.html">
+            <img src="img/buscar.png" alt="Icon" />
+            <span>Buscar</span>
+          </a>
+        </div>
+      </aside>
+      <main class="main-content">
+        <div class="title">
+          <span>Sonidos Binaurales</span>
+        </div>
+        <div class="image-container">
+          <img src="imgBin/1.png" alt="fondoOndas" />
+          <div class="corner-text">ACTIVA TU CEREBRO</div>
+          <div class="bottom-left-text">
+            ONDAS GAMMA BINAURALES:<br />Rendimiento Mental,<br />
+            Concentración y Memoria
+          </div>
+        </div>
+<!-- Contenedor de pistas -->
+        <div class="image-container">
+          <img
+            src="imgBin/fondoPistas.png"
+            class="background-image"
+            alt="fondoPistas"
+          />
+          <div class="track-list">
+            <div class="music-item">
+                <img src="imgBin/a1.png" alt="album art">
+                <div class="music-info">
+                  <div class="titlee">PISTA 4</div>
+                  <div class="time">Time</div>
+                </div>
+                <div class="herz">FRECUENCIA</div>
+                <div class="onda">Gamma</div>
+                <button class="play-button">
+                  <img src="imgBin/play-bina.png" alt="play button">
+                </button>
+              </div>
+              <!-- Repeat the above block for each music item -->
+              <div class="music-item">
+                <img src="imgBin/a2.png" alt="album art">
+                <div class="music-info">
+                  <div class="titlee">PISTA 5</div>
+                  <div class="time">Time</div>
+                </div>
+                <div class="herz">FRECUENCIA</div>
+                <div class="onda">Gamma</div>
+                <button class="play-button">
+                  <img src="imgBin/play-bina.png" alt="play button">
+                </button>
+              </div>
+          
+              <div class="music-item">
+                <img src="imgBin/a3.png" alt="album art">
+                <div class="music-info">
+                  <div class="titlee">PISTA 6</div>
+                  <div class="time">Time</div>
+                </div>
+                <div class="herz">FRECUENCIA</div>
+                <div class="onda">Gamma</div>
+                <button class="play-button">
+                  <img src="imgBin/play-bina.png" alt="play button">
+                </button>
+              </div>
+          
+              <div class="music-item">
+                <img src="imgBin/a4.png" alt="album art">
+                <div class="music-info">
+                  <div class="titlee">PISTA 7</div>
+                  <div class="time">Time</div>
+                </div>
+                <div class="herz">FRECUENCIA</div>
+                <div class="onda">Gamma</div>
+                <button class="play-button">
+                  <img src="imgBin/play-bina.png" alt="play button">
+                </button>
+              </div>
+
+          </div>
+
+        </div>
+      </main>
+    </div>
+    <!-- FOOT -->
+    <footer class="footer">
+      <div class="footer-links">
+          <div class="contactanos">
+            <span>Contactanos</span>
+              <div class="imagenes-container">
+                <img class="imagen-footer" src="imgHF/whats.png" alt="Whatsapp">
+                <img class="imagen-footer" src="imgHF/telegram.png" alt="Telegram">
+              </div>
+          </div>
+        </div>
+        <div class="canales-atencion">
+          <span>Canales de atencion</span>
+            <div class="imagenes-container">
+              <img class="imagen-footer" src="imgHF/correo.png" alt="Correo">
+            </div>
+        </div>
+        <div class="social-media">
+          <span>Redes Sociales</span>
+            <div class="imagenes-container">
+              <img class="imagen-footer" src="imgHF/fb.png" alt="Facebook">
+              <img class="imagen-footer" src="imgHF/insta.png" alt="Instagram">
+            </div>
+        </div>
+      </div>
+      <div class="texto-footer">
+        <span>¿Quienes somos? </span>
+      </div>
+    </footer>
+    
+    
+  </body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Musicoterapia</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+        
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100vw;
+            height: 100vh;
+            font-family: 'Bebas Neue', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: url('images/background.jpg') no-repeat center center/cover;
+            color: #CDB4DB;
+        }
+
+        .container {
+            text-align: center;
+            background: rgba(0, 0, 0, 0.5);
+            width: 100vw; /* Ancho completo de la ventana */
+            height: 100vh; /* Altura completa de la ventana */
+            padding: 20px;
+            position: relative; /* Asegura que los elementos hijos se posicionen en relación a este contenedor */
+            box-sizing: border-box; /* Incluye padding en el ancho y alto */
+        }
+
+        .logo {
+            width: 170px;
+            height: 160px;
+            margin: 0 auto 60px; /* Centra el logo horizontalmente y ajusta el margen inferior */
+            display: block; /* Asegura que el margin auto funcione */
+        }
+
+        .title {
+            font-size: 3rem; /* Aumenta el tamaño de la fuente */
+            margin: 40px 0; /* Aumenta la distancia encima y debajo del título */
+            font-family: 'Bebas Neue', sans-serif; /* Asegura el uso de Bebas Neue */
+        }
+
+        .button {
+            position: absolute; /* Añadido para posicionar el botón absolutamente */
+            width: 207px; /* Ancho */
+            height: 48px; /* Altura */
+            left: 50%; /* Centra horizontalmente */
+            transform: translateX(-50%); /* Ajusta la posición para estar realmente centrado */
+            top: calc(100% - 100px); /* Ajusta esta propiedad según sea necesario para que aparezca justo debajo del título */
+            background-color: #BD96D6;
+            color: white;
+            border: none;
+            border-radius: 40px; /* Radio de borde */
+            cursor: pointer;
+            font-size: 1rem;
+            font-family: 'Bebas Neue', sans-serif; /* Asegura el uso de Bebas Neue */
+            transition: background-color 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: #A57FB8;
+        }
+
+        /* Media Queries for Responsive Design */
+        @media (max-width: 768px) {
+            .logo {
+                width: 150px;
+                height: 140px;
+                margin-bottom: 40px;
+            }
+
+            .title {
+                font-size: 2.5rem;
+                margin: 30px 0;
+            }
+
+            .button {
+                width: 180px;
+                height: 40px;
+                font-size: 0.9rem;
+                top: calc(100% - 90px);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo {
+                width: 120px;
+                height: 110px;
+                margin-bottom: 30px;
+            }
+
+            .title {
+                font-size: 2rem;
+                margin: 20px 0;
+            }
+
+            .button {
+                width: 150px;
+                height: 36px;
+                font-size: 0.8rem;
+                top: calc(100% - 80px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="images/logo.png" alt="Logo" class="logo">
+        <h1 class="title">BIENVENIDO A MUSICOTERAPIA</h1>
+        <button class="button">COMENZAR</button>
+    </div>
+</body>
+</html>

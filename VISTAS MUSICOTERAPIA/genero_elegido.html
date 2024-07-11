@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Género Elegido</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: url('images/fondoselegidos.png') no-repeat center center fixed;
+            background-size: cover;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .header {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            color: black;
+            margin-bottom: 60px;
+            padding-top: 60px;
+        }
+
+        .header h1 {
+            font-size: 48px;
+            margin: 0;
+            position: relative;
+            z-index: 1;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .header::before {
+            content: '';
+            width: 120px;
+            height: 120px;
+            background: radial-gradient(circle, rgba(255, 0, 150, 0.8), rgba(0, 0, 255, 0.8));
+            border-radius: 50%;
+            position: absolute;
+            top: 70%;
+            left: 61%;
+            transform: translate(-40%, -40%);
+            z-index: 0;
+        }
+
+        .back-arrow {
+            font-size: 24px;
+            color: black;
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+        }
+
+        .image-container {
+            width: 80%;
+            margin: 0 auto;
+            position: relative;
+            padding-bottom: 10px;
+            height: 80vh;
+        }
+
+        .background-image {
+            width: 95%;
+            height: 90%;
+            border-radius: 10px;
+            overflow-y: auto;
+        }
+
+        .track-list {
+            position: absolute;
+            top: 20px;
+            left: 0;
+            padding: 20px;
+            box-sizing: border-box;
+            height: 100%;
+            overflow-y: auto;
+            border-radius: 10px;
+            width: calc(100% - 40px);
+        }
+
+        .music-item {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            border-radius: 5px;
+            border-bottom: 1px solid #ccc;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .music-item img {
+            width: 50px;
+            height: 50px;
+            border-radius: 5px;
+            margin-right: 20px;
+        }
+
+        .music-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-grow: 1;
+        }
+
+        .music-info div {
+            flex: 1;
+            text-align: center;
+        }
+
+        .play-button {
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s;
+        }
+
+        .play-button img {
+            width: 40px;
+            height: 40px;
+        }
+
+        .scroll-button {
+            position: absolute;
+            right: 0;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .scroll-button img {
+            width: 12px;
+            height: 12px;
+            display: block;
+            margin: auto;
+        }
+
+        .scroll-button.up {
+            top: 5px;
+        }
+
+        .scroll-button.down {
+            bottom: 5px;
+        }
+
+        .play-button:hover {
+            transform: scale(1.1);
+        }
+
+        .track-details {
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            flex: 1;
+        }
+
+        .titlee {
+            font-weight: bold;
+            font-size: 16px;
+            color: black; /* Color negro para los títulos de las pistas */
+        }
+
+        .time {
+            margin-top: 5px;
+            font-size: 14px;
+            color: #ddd;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <span class="back-arrow">&#8592;</span>
+            <h1>Género Elegido</h1>
+        </div>
+        <div class="image-container">
+            <img src="images/fondoPistas.png" class="background-image" alt="fondoPistas">
+            <div class="track-list">
+                <div class="music-item">
+                    <img src="images/Pista1.png" alt="album art">
+                    <div class="music-info">
+                        <div class="track-details">
+                            <div class="titlee">PISTA 4</div>
+                            <div class="time">Artista</div>
+                        </div>
+                        <div class="herz">ÁLBUM</div>
+                        <div class="onda">10 MAY 2024</div>
+                    </div>
+                    <button class="play-button">
+                        <img src="images/play-bina.png" alt="play button">
+                    </button>
+                </div>
+                <div class="music-item">
+                    <img src="images/Pista2.png" alt="album art">
+                    <div class="music-info">
+                        <div class="track-details">
+                            <div class="titlee">PISTA 5</div>
+                            <div class="time">Artista</div>
+                        </div>
+                        <div class="herz">ÁLBUM</div>
+                        <div class="onda">10 MAY 2024</div>
+                    </div>
+                    <button class="play-button">
+                        <img src="images/play-bina.png" alt="play button">
+                    </button>
+                </div>
+                <div class="music-item">
+                    <img src="images/Pista3.png" alt="album art">
+                    <div class="music-info">
+                        <div class="track-details">
+                            <div class="titlee">PISTA 6</div>
+                            <div class="time">Artista</div>
+                        </div>
+                        <div class="herz">ÁLBUM</div>
+                        <div class="onda">10 MAY 2024</div>
+                    </div>
+                    <button class="play-button">
+                        <img src="images/play-bina.png" alt="play button">
+                    </button>
+                </div>
+                <div class="music-item">
+                    <img src="images/Pista4.png" alt="album art">
+                    <div class="music-info">
+                        <div class="track-details">
+                            <div class="titlee">PISTA 7</div>
+                            <div class="time">Artista</div>
+                        </div>
+                        <div class="herz">ÁLBUM</div>
+                        <div class="onda">10 MAY 2024</div>
+                    </div>
+                    <button class="play-button">
+                        <img src="images/play-bina.png" alt="play button">
+                    </button>
+                </div>
+            </div>
+            <div class="scroll-button up"></div>
+            <div class="scroll-button down"></div>
+        </div>
+    </div>
+</body>
+</html>

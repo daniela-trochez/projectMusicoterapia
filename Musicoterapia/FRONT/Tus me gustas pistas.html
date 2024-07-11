@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Musicoterapia</title>
+    <style>
+      /* Estilos generales para el cuerpo de la pagina */
+      body {
+        margin: 0;
+        font-family: "Roboto", sans-serif;
+      }
+
+      /* Estilos del encabezado de la página */
+    .navbar {
+      background-color: #fff;
+      padding: 1em;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #ddd;
+      position: relative; /* Asegura que `z-index` funcione correctamente */
+      z-index: 1000; /* Asegura que esté por encima del resto del contenido */
+    }
+  
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+  
+    .logo img {
+      width: 65px;
+      height: 60px;
+      margin-right: 10px;
+    }
+  
+    .navbar span {
+      color: #59009A;
+      font-weight: bold;
+      margin-right: 20px;
+    }
+  
+    .servicios {
+      position: relative;
+    }
+  
+    .submenu {
+      position: absolute; /* Asegura que esté sobre el contenido */
+      background-color: #fff;
+      padding: 5px 5px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      display: none;
+      top: 40px;
+      left: 0;
+      width: auto;
+      z-index: 1001; /* Asegura que esté por encima del contenido `navbar` */
+    }
+  
+    .servicios:hover .submenu {
+      display: block;
+    }
+  
+    .submenu ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+  
+    .submenu li {
+      padding: 20px;
+      border-bottom: 1px solid #ddd;
+    }
+  
+    .submenu li:hover {
+      background-color: #f0f0f0;
+    }
+  
+    .user-info {
+      display: flex;
+      align-items: center;
+    }
+
+    .imagen-usuario {
+      width: 30px;
+      height: 30px;
+    }
+
+
+      /* Estilos del contenedor principal */
+      .container {
+        display: flex;
+        height: calc(100vh - 126px);
+      }
+
+      /* Estilos de la barra lateral */
+      .sidebar {
+        width: 25%;
+        background-color: #c7b7fe49;
+        padding: 20px;
+      }
+
+      /* Estilos de los elementos del menu en la barra lateral */
+      .sidebar .menu-item {
+        padding: 12px;
+        margin: 10px 0;
+        background: #fff;
+        border-radius: 15px;
+        transition: background 0.3s ease;
+      }
+
+      /* Estilos de los elementos del menú cuando están activos o al pasar el ratón */
+      .sidebar .menu-item.active,
+      .sidebar .menu-item:hover {
+        background: linear-gradient(#ffffff, #9c76c1);
+        box-shadow: 1px 5px 10px 0.1px rgb(145, 145, 145);
+      }
+
+      /* Estilos de las imágenes dentro de los elementos del menú */
+      .sidebar .menu-item img {
+        width: 24px;
+        height: 24px;
+        margin-right: 10px;
+      }
+
+      /* Estilos de los enlaces dentro de los elementos del menú */
+      .sidebar .menu-item a {
+        display: flex;
+        align-items: center;
+        color: inherit;
+        text-decoration: none;
+        justify-content: center;
+      }
+
+      /* Estilos del texto dentro de los elementos del menú */
+      .sidebar .menu-item span {
+        flex-grow: 1;
+        text-align: center;
+        font-size: 16px;
+      }
+
+      /* Estilos del contenido principal */
+      .main-content {
+        width: 75%;
+        padding: 20px;
+        overflow-y: auto;
+      }
+
+      /* Estilos del título principal */
+      .title {
+        display: flex;
+        align-items: center;
+        font-size: 54px;
+        margin-bottom: 20px;
+        position: relative;
+        margin-left: 335px;
+      }
+
+      /* Estilos del decorado del título */
+      .title::after {
+        content: "";
+        width: 100px;
+        height: 100px;
+        background: linear-gradient(to right, #ae67d7, #3e85e6);
+        position: absolute;
+        left: 250px;
+        border-radius: 50px;
+      }
+
+      /* Estilos del texto dentro del título */
+      .title span {
+        position: relative;
+        z-index: 1;
+        margin-right: 10px;
+      }
+
+      /* Estilos de las pestañas de navegación */
+      .tabs {
+        display: flex;
+        justify-content: space-around;
+        margin: 20px 0;
+        font-size: 28px;
+      }
+
+      /* Estilos de los enlaces de las pestañas */
+      .tabs a {
+        text-decoration: none;
+        transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+      }
+
+      /* Estilos de colores específicos de las pestañas */
+      .tabs a[href="Tus me gustas pistas.html"] {
+        color: purple;
+      }
+      
+      .tabs a[href="Tus me gustas podcast.html"] {
+        color: black;
+      }
+
+      /* Estilos de las pestañas al pasar el ratón */
+      .tabs .tabs-pistas-podcast:hover {
+        transform: scale(1.1);
+        background-color: rgba(255, 255, 255, 0.5);
+      }
+
+      /* Estilos del contenedor de contenido */
+      .content {
+        display: flex;
+      }
+
+      /* Estilos del contenedor de pistas */
+      .tracks-container {
+        width: 100%;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        padding: 10px;
+        background: #f0f0f0;
+      }
+
+      /* Estilos generales de cada pista */
+      .track {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px;
+        border-bottom: 1px solid #ccc;
+      }
+
+      /* Elimina el borde inferior de la última pista */
+      .track:last-child {
+        border-bottom: none;
+      }
+
+      /* Estilos de las imágenes de las pistas */
+      .track img {
+        height: 50px;
+        width: 50px;
+        border-radius: 5px;
+      }
+
+      /* Estilos de los divs dentro de cada pista */
+      .track div {
+        padding: 0 20px;
+      }
+
+      /* Estilos de los enlaces de los botones de reproducción */
+      .track a.play-button {
+        background: white;
+        border: 2px solid black;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        cursor: pointer;
+        position: relative;
+        color: black;
+      }
+
+      /* Estilos del triángulo dentro del botón de reproducción */
+      .track a.play-button::before {
+        content: '';
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 10px 0 10px 16px;
+        border-color: transparent transparent transparent black;
+        position: absolute;
+        left: 13px;
+      }
+
+      /* Estilos del pie de página */
+      .footer {
+        background-color: #59009A;
+        color: #fff;
+        padding: 35px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap; /* Permite que los elementos se envuelvan si no caben en una sola fila */
+      }
+
+      /* Estilos de los enlaces del pie de página */
+      .footer-links {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap; /* Envuelve los elementos si no caben en una sola fila */
+      }
+
+      /* Estilos de la sección de contacto */
+      .contactanos,
+      .canales-atencion,
+      .social-media {
+        display: flex;
+        flex-direction: column; /* Organiza los elementos en columnas */
+        align-items: center; /* Centra los elementos horizontalmente */
+        margin-bottom: 20px; /* Espacio inferior entre las secciones */
+        font-family: 'Roboto Slab', serif; /* Añadido para la fuente */
+      }
+
+      /* Estilos de los span dentro de las secciones de contacto */
+      .contactanos span,
+      .canales-atencion span,
+      .social-media span {
+        margin-bottom: 10px; /* Espacio inferior del texto */
+      }
+
+      /* Estilos del contenedor de imágenes en el pie de página */
+      .imagenes-container {
+        display: flex;
+        align-items: center;
+      }
+
+      /* Estilos de las imágenes del pie de página */
+      .imagen-footer {
+        width: 30px; /* Ancho de las imágenes */
+        height: 30px; /* Altura de las imágenes */
+      }
+
+      /* Estilos del texto del pie de página */
+      .texto-footer {
+        text-align: right;
+        align-items: center;
+        font-family: 'Roboto Slab', serif; /* Añadido para la fuente */
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="logo">
+        <img src="img/logo.png" alt="Logo de Atención Profesional">
+        <span>Musicoterapia</span>
+      </div>
+      <div class="servicios">
+        <span id="servicios-button">Servicios</span>
+        <div class="submenu">
+          <ul>
+            <li>Biblioterapia</li>
+            <li>Arteterapia</li>
+            <li>Musicoterapia</li>
+            <li>Ejercicios</li>
+          </ul>
+        </div>
+      </div>
+      <div class="user-info">
+        <span>Juanito Alimaña</span>
+        <img class="imagen-usuario" src="img/user.png" alt="Foto de perfil del usuario">
+      </div>
+    </nav>
+    <div class="container">
+      <aside class="sidebar">
+        <div class="menu-item">
+          <a href="#">
+            <img src="img/genero.png" alt="Icon">
+            <span>Géneros</span>
+          </a>
+        </div>
+        <div class="menu-item">
+          <a href="#">
+            <img src="img/album.png" alt="Icon">
+            <span>Álbum</span>
+          </a>
+        </div>
+        <div class="menu-item">
+          <a href="#">
+            <img src="img/pod.png" alt="Icon">
+            <span>Podcast</span>
+          </a>
+        </div>
+        <div class="menu-item">
+          <a href="#">
+            <img src="img/patologia.png" alt="Icon">
+            <span>Patologías</span>
+          </a>
+        </div>
+        <div class="menu-item">
+          <a href="#">
+            <img src="img/binaural.png" alt="Icon">
+            <span>Sonidos Binaurales</span>
+          </a>
+        </div>
+        <div class="menu-item">
+          <a href="#">
+            <img src="img/playL.png" alt="Icon">
+            <span>PlayList</span>
+          </a>
+        </div>
+        <div class="menu-item active">
+          <a href="Tus me gustas podcast.html">
+            <img src="img/like.png" alt="Icon">
+            <span>Me gusta</span>
+          </a>
+        </div>
+        <div class="menu-item">
+          <a href="#">
+            <img src="img/buscar boton.png" alt="Buscar Icon">
+            <span>Buscar</span>
+          </a>
+        </div>
+      </aside>
+      <main class="main-content">
+        <div class="title">
+          <span>Tus me Gusta</span>
+        </div>
+
+        <div class="tabs">
+          <a href="Tus me gustas pistas.html" class="tabs-pistas-podcast">Pistas</a>
+          <a href="Tus me gustas podcast.html" class="tabs-pistas-podcast">Podcast</a>
+        </div>
+
+        <div class="content">
+          <div class="tracks-container">
+            <div class="track">
+              <img
+                src="img/Pista1.jpg"
+                alt="pista 1"
+              />
+              <div>
+                <span>Pista 1</span><br />
+                <span>Artista</span>
+              </div>
+              <div>Álbum</div>
+              <div>11/07/2024</div>
+              <a href="Reproductor2.html" class="play-button"></a>
+            </div>
+            <div class="track">
+              <img
+                src="img/pista2.jpg"
+                alt="pista 2"
+              />
+              <div>
+                <span>Pista 2</span><br />
+                <span>Artista</span>
+              </div>
+              <div>Álbum</div>
+              <div>11/07/2024</div>
+              <a href="Reproductor2.html" class="play-button"></a>
+            </div>
+
+            <div class="track">
+              <img
+                src="img/pista3.jpeg"
+                alt="pista 3"
+              />
+              <div>
+                <span>Pista 3</span><br />
+                <span>Artista</span>
+              </div>
+              <div>Álbum</div>
+              <div>11/07/2024</div>
+              <a href="Reproductor2.html" class="play-button"></a>
+            </div>
+
+            <div class="track">
+              <img
+                src="img/pista4.avif"
+                alt="pista 4"
+              />
+              <div>
+                <span>Pista 4</span><br />
+                <span>Artista</span>
+              </div>
+              <div>Álbum</div>
+              <div>11/07/2024</div>
+              <a href="Reproductor2.html" class="play-button"></a>
+            </div>
+
+            <div class="track">
+              <img
+                src="img/pista5.jpg"
+                alt="pista 5"
+              />
+              <div>
+                <span>Pista 5</span><br />
+                <span>Artista</span>
+              </div>
+              <div>Álbum</div>
+              <div>11/07/2024</div>
+              <a href="Reproductor2.html" class="play-button"></a>
+            </div>
+            <div class="track">
+              <img
+                src="img/pista6.jpg"
+                alt="pista 6"
+              />
+              <div>
+                <span>Pista 6</span><br />
+                <span>Artista</span>
+              </div>
+              <div>Álbum</div>
+              <div>11/07/2024</div>
+              <a href="Reproductor2.html" class="play-button"></a>
+            </div>
+            <div class="track">
+              <img
+                src="img/pista7.jpg"
+                alt="pista 7"
+              />
+              <div>
+                <span>Pista 7</span><br />
+                <span>Artista</span>
+              </div>
+              <div>Álbum</div>
+              <div>11/07/2024</div>
+              <a href="Reproductor2.html" class="play-button"></a>
+            </div>
+            <div class="track">
+              <img
+                src="img/pista8.jpg"
+                alt="pista 8"
+              />
+              <div>
+                <span>Pista 8</span><br />
+                <span>Artista</span>
+              </div>
+              <div>Álbum</div>
+              <div>11/07/2024</div>
+              <a href="Reproductor2.html" class="play-button"></a>
+            </div>
+            <div class="track">
+              <img
+                src="img/pista9.jpg"
+                alt="pista 9"
+              />
+              <div>
+                <span>Pista 9</span><br />
+                <span>Artista</span>
+              </div>
+              <div>Álbum</div>
+              <div>11/07/2024</div>
+              <a href="Reproductor2.html" class="play-button"></a>
+            </div>
+            <div class="track">
+              <img
+                src="img/pista10.jpg"
+                alt="pista 10"
+              />
+              <div>
+                <span>Pista 10</span><br />
+                <span>Artista</span>
+              </div>
+              <div>Álbum</div>
+              <div>11/07/2024</div>
+              <a href="Reproductor2.html" class="play-button"></a>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+    <footer class="footer">
+      <div class="footer-links">
+          <div class="contactanos">
+            <span>Contactanos</span>
+            <div class="imagenes-container">
+              <img class="imagen-footer" src="img/whasap.png" alt="Whatsapp">
+              <img class="imagen-footer" src="img/telegram.png" alt="Telegram">
+            </div>
+        </div>
+      </div>
+      <div class="canales-atencion">
+        <span>Canales de atencion</span>
+          <div class="imagenes-container">
+            <img class="imagen-footer" src="img/email.png" alt="Correo">
+          </div>
+      </div>
+      <div class="social-media">
+        <span>Redes Sociales</span>
+          <div class="imagenes-container">
+            <img class="imagen-footer" src="img/faceboock.png" alt="Facebook">
+            <img class="imagen-footer" src="img/instagram.png" alt="Instagram">
+          </div>
+      </div>
+    </div>
+    <div class="texto-footer">
+      <span>¿Quienes somos? </span>
+    </div>
+  </footer>
+</body>
+</html>

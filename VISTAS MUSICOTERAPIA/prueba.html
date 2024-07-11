@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+    <style>
+        /* Estilos adicionales para la interacción */
+        .genre:hover img,
+        .imagen-footer:hover,
+        .title:hover span,
+        .nav a:hover {
+            transform: scale(1.1); /* Aumenta el tamaño al pasar el cursor */
+        }
+        /* Estilos CSS */
+        .imagen-usuario {
+            width: 30px;
+            height: 30px;
+        }
+
+        .body {
+            padding: 20px;
+        }
+
+        .footer-container {
+    display: flex;
+    padding: 0;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+}
+.contact-item {
+    display: flex;
+    flex-direction: column;
+    padding-left: 10px;
+    padding-right: 10px;
+    align-items: center;
+    text-align: center;
+}
+
+.contact-item span {
+    margin-bottom: 5px;
+}
+
+.iconos {
+    display: flex;
+    justify-content: center;
+}
+
+.iconos a {
+    margin: 0 10px;
+}
+
+.iconos img {
+    width: 24px;
+    height: 24px;
+}
+
+.quienes-somos {
+    align-self: center;
+    color: #ffffff;
+    text-decoration: none;
+    margin-left: auto;
+}
+
+        body {
+            margin: 0;
+            font-family: "Roboto", sans-serif;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #fff;
+        }
+
+        .navbar {
+            background-color: #fff;
+            padding: 1em;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            width: 65px;
+            height: 60px;
+            margin-right: 10px;
+        }
+
+        .navbar span {
+            color: #59009A;
+            font-weight: bold;
+            margin-right: 20px;
+        }
+
+        .servicios {
+            position: relative;
+        }
+
+        .submenu {
+            position: absolute;
+            background-color: #fff;
+            padding: 5px 5px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            display: none;
+            top: 40px;
+            left: 0;
+            width: auto;
+        }
+
+        .servicios:hover .submenu {
+            display: block;
+        }
+
+        .submenu ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .submenu li {
+            padding: 20px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .submenu li:hover {
+            background-color: #f0f0f0;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+        }
+
+        .imagen-usuario {
+            width: 30px;
+            height: 30px;
+        }
+
+        .body {
+            padding: 20px;
+        }
+
+        .container {
+            display: flex;
+            height: calc(100vh - 126px);
+        }
+
+       
+      /* Estilos del contenedor principal */
+      .container {
+        display: flex;
+        height: calc(100vh - 126px);
+      }
+
+      /* Estilos de la barra lateral */
+      .sidebar {
+        width: 25%;
+        background-color: #c7b7fe49;
+        padding: 20px;
+      }
+
+      /* Estilos de los elementos del menu en la barra lateral */
+      .sidebar .menu-item {
+        padding: 12px;
+        margin: 10px 0;
+        background: #fff;
+        border-radius: 15px;
+        transition: background 0.3s ease;
+      }
+
+      /* Estilos de los elementos del menú cuando están activos o al pasar el ratón */
+      .sidebar .menu-item.active,
+      .sidebar .menu-item:hover {
+        background: linear-gradient(#ffffff, #9c76c1);
+        box-shadow: 1px 5px 10px 0.1px rgb(145, 145, 145);
+      }
+
+      /* Estilos de las imágenes dentro de los elementos del menú */
+      .sidebar .menu-item img {
+        width: 24px;
+        height: 24px;
+        margin-right: 10px;
+      }
+
+      /* Estilos de los enlaces dentro de los elementos del menú */
+      .sidebar .menu-item a {
+        display: flex;
+        align-items: center;
+        color: inherit;
+        text-decoration: none;
+        justify-content: center;
+      }
+
+      /* Estilos del texto dentro de los elementos del menú */
+      .sidebar .menu-item span {
+        flex-grow: 1;
+        text-align: center;
+        font-size: 16px;
+      }
+
+      /* Estilos del contenido principal */
+      .main-content {
+        width: 75%;
+        padding: 20px;
+        overflow-y: auto;
+      }
+
+
+        .main-content {
+            width: 75%;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .title {
+            margin-right: 50px;
+            display: flex;
+            align-items: center;
+            font-size: 75px;
+            margin-bottom: 20px;
+            position: relative;
+            margin-left: 335px;
+            transition: color 0.3s; /* Agrega una transición de color al título */
+        }
+
+        .title:hover {
+            color: #3e85e6; /* Cambia el color del título al pasar el cursor */
+        }
+
+        .title::after {
+            content: "";
+            width: 110px;
+            height: 110px;
+            background: linear-gradient(to right, #ae67d7, #3e85e6);
+            position: absolute;
+            left: 176px;
+            border-radius: 80px;
+        }
+
+        .title span {
+            position: relative;
+            z-index: 1;
+            font-family: 'Roboto Slab', serif; /* Fuente Roboto Slab */
+        }
+
+        .genres {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            font-family: 'Roboto', sans-serif; /* Fuente Roboto para el contenedor de géneros */
+        }
+
+        .genre {
+            width: calc(50% - 20px);
+            text-align: center;
+        }
+
+        .genre h3 {
+            margin-bottom: 10px;
+            font-family: 'Roboto Slab', serif; /* Fuente Roboto Slab para los títulos */
+            transition: color 0.3s; /* Agrega una transición de color al pasar el cursor sobre el título */
+        }
+
+        .genre:hover h3 {
+            color: #3e85e6; /* Cambia el color del título al pasar el cursor */
+        }
+
+        .genre img {
+            width: 80%;
+            border-radius: 10px;
+            transition: transform 0.3s; /* Agrega una transición para suavizar el cambio */
+        }
+
+        .genre:hover img {
+            transform: scale(1.1); /* Aumenta el tamaño de la imagen al pasar el cursor */
+        }
+
+        /* Media Queries para Responsive Design */
+        @media (max-width: 1200px) {
+            .container {
+                flex-direction: column;
+            }
+
+            .sidebar,
+            .main-content {
+                width: 100%;
+            }
+
+            .title {
+                margin-left: 0;
+                font-size: 60px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .logo img {
+                width: 50px;
+                height: 45px;
+            }
+
+            .navbar span {
+                font-size: 20px;
+            }
+
+            .title {
+                font-size: 40px;
+                margin-left: 0;
+            }
+
+            .genre {
+                width: calc(100% - 20px);
+            }
+
+            .genre img {
+                width: 80%;
+            }
+
+            form .input-group {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            form input[type="text"],
+            form input[type="submit"] {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+
+            .footer {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .footer-links,
+            .contactanos,
+            .canales-atencion,
+            .social-media,
+            .texto-footer {
+                margin-bottom: 20px;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .navbar {
+                padding: 0.5em;
+            }
+
+            .logo img {
+                width: 40px;
+                height: 35px;
+            }
+
+            .navbar span {
+                font-size: 18px;
+                margin-right: 10px;
+            }
+
+            .title {
+                font-size: 30px;
+            }
+
+            .genre img {
+                width: 100%;
+            }
+
+            .footer {
+                padding: 20px;
+            }
+
+            .footer-links,
+            .contactanos,
+            .canales-atencion,
+            .social-media,
+            .texto-footer {
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+    <title>Musicoterapia</title>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <img src="images/logo.png" alt="Logo de Atención Profesional">
+            <span>Musicoterapia</span>
+        </div>
+        <div class="user-info">
+            <span>Juanito Alimaña</span>
+            <img class="imagen-usuario" src="images/user.png" alt="Foto de perfil del usuario">
+        </div>
+    </nav>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="menu-item active">
+                <a href="#">
+                    <img src="images/genero.png" alt="Icon">
+                    <span>Géneros</span>
+                </a>
+            </div>
+            <div class="menu-item">
+                <a href="#">
+                    <img src="images/album.png" alt="Icon">
+                    <span>Álbum</span>
+                </a>
+            </div>
+            <div class="menu-item">
+                <a href="#">
+                    <img src="images/pod.png" alt="Icon">
+                    <span>Podcast</span>
+                </a>
+            </div>
+            <div class="menu-item">
+                <a href="#">
+                    <img src="images/patologia.png" alt="Icon">
+                    <span>Patologías</span>
+                </a>
+            </div>
+            <div class="menu-item">
+                <a href="#">
+                    <img src="images/binaural.png" alt="Icon">
+                    <span>Sonidos Binaurales</span>
+                </a>
+            </div>
+            <div class="menu-item">
+                <a href="#">
+                    <img src="images/playL.png" alt="Icon">
+                    <span>PlayList</span>
+                </a>
+            </div>
+            <div class="menu-item">
+                <a href="#">
+                    <img src="images/like.png" alt="Icon">
+                    <span>Me gusta</span>
+                </a>
+            </div>
+            <!-- AGREGAR ....BUSCAR -->
+            <div class="menu-item">
+                <a href="#">
+                    <img src="images/buscar boton.png" alt="Icon" />
+                    <span>Buscar</span>
+                </a>
+            </div>
+        </aside>
+        <main class="main-content">
+            <div class="title">
+                <span>Géneros</span>
+            </div>
+            <div class="genres">
+                <div class="genre">
+                    <h3>Clásica</h3>
+                    <img src="images/clasica.png" alt="Clásica" onerror="this.onerror=null;this.src='img/placeholder.png';">
+                </div>
+                <div class="genre">
+                    <h3>Ambiental</h3>
+                    <img src="images/ambiental.png" alt="Ambiental" onerror="this.onerror=null;this.src='img/placeholder.png';">
+                </div>
+                <div class="genre">
+                    <h3>Instrumental</h3>
+                    <img src="images/instrumental.png" alt="Instrumental" onerror="this.onerror=null;this.src='img/placeholder.png';">
+                </div>
+                <div class="genre">
+                    <h3>Electrónica</h3>
+                    <img src="images/electronica.png" alt="Electrónica" onerror="this.onerror=null;this.src='img/placeholder.png';">
+                </div>
+            </div>
+        </main>
+    </div>
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="contact-item">
+                <span>Contáctanos</span>
+                <div class="iconos">
+                    <a href="#"><img src="images/whasap.png" alt="WhatsApp"></a>
+                </div>
+            </div>
+            <div class="contact-item">
+                <span>Canales de atención</span>
+                <div class="iconos">
+                    <a href="#"><img src="images/telegram.png" alt="Telegram"></a>
+                    <a href="#"><img src="images/email.png" alt="Email"></a>
+                </div>
+            </div>
+            <div class="contact-item">
+                <span>Redes sociales</span>
+                <div class="iconos">
+                    <a href="#"><img src="images/faceboock.png" alt="Facebook"></a>
+                    <a href="#"><img src="images/instagram.png" alt="Instagram"></a>
+                </div>
+            </div>
+            <a class="quienes-somos" href="#">¿Quiénes somos?</a>
+        </div>
+    </footer>
+</body>
+</html>

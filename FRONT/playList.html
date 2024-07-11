@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Musicoterapia</title>
+    <style>
+      body {
+        margin: 0;
+        font-family: "Roboto", sans-serif;
+      }
+      /* Estilos del encabezado de la página */
+    .navbar {
+      background-color: #fff;
+      padding: 1em;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #ddd;
+      position: relative; /* Asegura que `z-index` funcione correctamente */
+      z-index: 1000; /* Asegura que esté por encima del resto del contenido */
+    }
+  
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+  
+    .logo img {
+      width: 65px;
+      height: 60px;
+      margin-right: 10px;
+    }
+  
+    .navbar span {
+      color: #59009A;
+      font-weight: bold;
+      margin-right: 20px;
+    }
+  
+    .servicios {
+      position: relative;
+    }
+  
+    .submenu {
+      position: absolute; /* Asegura que esté sobre el contenido */
+      background-color: #fff;
+      padding: 5px 5px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      display: none;
+      top: 40px;
+      left: 0;
+      width: auto;
+      z-index: 1001; /* Asegura que esté por encima del contenido `navbar` */
+    }
+  
+    .servicios:hover .submenu {
+      display: block;
+    }
+  
+    .submenu ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+  
+    .submenu li {
+      padding: 20px;
+      border-bottom: 1px solid #ddd;
+    }
+  
+    .submenu li:hover {
+      background-color: #f0f0f0;
+    }
+  
+    .user-info {
+      display: flex;
+      align-items: center;
+    }
+
+    .imagen-usuario {
+      width: 30px;
+      height: 30px;
+    }
+
+      .container {
+        display: flex;
+        height: calc(100vh - 126px);
+      }
+
+      .sidebar {
+        width: 25%;
+        background-color: #c7b7fe49;
+        padding: 20px;
+      }
+      .sidebar .menu-item {
+        padding: 12px;
+        margin: 10px 0;
+        background: #fff;
+        border-radius: 15px;
+        transition: background 0.3s ease;
+      }
+      .sidebar .menu-item.active,
+      .sidebar .menu-item:hover {
+        /* background: #e6e9ec; */
+        background: linear-gradient(#ffffff, #9c76c1);
+        box-shadow: 1px 5px 10px 0.1px rgb(145, 145, 145);
+      }
+      .sidebar .menu-item img {
+        width: 24px;
+        height: 24px;
+        margin-right: 10px;
+      }
+      .sidebar .menu-item a {
+        display: flex;
+        align-items: center;
+        color: inherit;
+        text-decoration: none;
+        justify-content: center;
+      }
+      .sidebar .menu-item span {
+        flex-grow: 1;
+        text-align: center;
+        font-size: 16px;
+      }
+      .main-content {
+        width: 75%;
+        padding: 20px;
+        overflow-y: auto;
+      }
+      .title {
+        margin-right: 50px;
+        display: flex;
+        align-items: center;
+        font-size: 75px;
+        margin-bottom: 20px;
+        position: relative;
+        margin-left: 250px;
+      }
+      .title::after {
+        content: "";
+        width: 105px;
+        height: 105px;
+        background: linear-gradient(to right, #ae67d7, #3e85e6);
+        position: absolute;
+        left: 185px;
+        border-radius: 50px;
+      }
+      .title span {
+        position: relative;
+        z-index: 1;
+      }
+      
+      .playlists {
+      flex: 1;
+      padding: 20px;
+      }
+
+      .folder-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .folder-container .folder {
+      width: 100px;
+      text-align: center;
+    }
+
+    .folder-container .folder img {
+      width: 80px;
+      height: 80px;
+    }
+
+    /* FOOT */
+    .footer {
+      background-color: #59009A;
+      color: #fff;
+      padding: 35px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap; /* Permite que los elementos se envuelvan si no caben en una sola fila */
+    }
+
+    .footer-links {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap; /* Envuelve los elementos si no caben en una sola fila */
+    }
+
+    .contactanos,
+    .canales-atencion,
+    .social-media {
+      display: flex;
+      flex-direction: column; /* Organiza los elementos en columnas */
+      align-items: center; /* Centra los elementos horizontalmente */
+      margin-bottom: 20px; /* Espacio inferior entre las secciones */
+      font-family: 'Roboto Slab', serif; /* Añadido para la fuente */
+    }
+
+    .contactanos span,
+    .canales-atencion span,
+    .social-media span {
+      margin-bottom: 10px; /* Espacio inferior del texto */
+    }
+
+    .imagenes-container {
+      display: flex;
+      align-items: center;
+    }
+
+    .imagen-footer {
+      width: 30px; /* Ancho de las imágenes */
+      height: 30px; /* Altura de las imágenes */
+      transition: transform 0.3s ease, opacity 0.3s ease; /* Transición al pasar el cursor */
+    }
+
+    .imagen-footer:hover {
+      transform: scale(1.2); /* Aumenta ligeramente el tamaño al pasar el cursor */
+      opacity: 0.7; /* Reduce la opacidad al pasar el cursor */
+    }
+
+    .imagen-interactiva {
+      transition: transform 0.3s ease, opacity 0.3s ease; /* Transición al pasar el cursor */
+    }
+
+    .imagen-interactiva:hover {
+      transform: scale(1.2); /* Aumenta ligeramente el tamaño al pasar el cursor */
+      opacity: 0.7; /* Reduce la opacidad al pasar el cursor */
+    }
+
+    .texto-footer {
+      text-align: right;
+      align-items: center;
+      font-family: 'Roboto Slab', serif; /* Añadido para la fuente */
+    }
+    
+  
+    </style>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="logo">
+        <img src="img/logo.png" alt="Logo de Atención Profesional">
+        <span>Musicoterapia</span>
+      </div>
+      <div class="servicios">
+        <span id="servicios-button">Servicios</span>
+        <div class="submenu">
+          <ul>
+            <li>Biblioterapia</li>
+            <li>Arteterapia</li>
+            <li>Musicoterapia</li>
+            <li>Ejercicios</li>
+          </ul>
+        </div>
+      </div>
+      <div class="user-info">
+        <span>Juanito Alimaña</span>
+        <img class="imagen-usuario" src="img/user.png" alt="Foto de perfil del usuario">
+      </div>
+    </nav>
+    <div class="container">
+      <aside class="sidebar">
+        <div class="menu-item">
+          <a href="#">
+            <img src="img/genero.png" alt="Icon" />
+            <span>Géneros</span>
+          </a>
+        </div>
+        <div class="menu-item">
+          <a href="#">
+            <img src="img/album.png" alt="Icon" />
+            <span href="#">Álbum</span>
+          </a>
+        </div>
+        <div class="menu-item">
+          <a href="#">
+            <img src="img/pod.png" alt="Icon" />
+            <span href="#">Podcast</span>
+          </a>
+        </div>
+        <div class="menu-item ">
+          <a href="patologias.html">
+            <img src="img/patologia.png" alt="Icon" />
+            <span href="#">Patologías</span>
+          </a>
+        </div>
+        <div class="menu-item">
+          <a href="binaurales.html">
+            <img src="img/binaural.png" alt="Icon" />
+            <span>Sonidos Binaurales</span>
+          </a>
+        </div>
+        <div class="menu-item active">
+          <a href="playList.html">
+            <img src="img/playL.png" alt="Icon" />
+            <span>PlayList</span>
+          </a>
+        </div>
+        <div class="menu-item">
+          <a href="#">
+            <img src="img/like.png" alt="Icon" />
+            <span>Me gusta</span>
+          </a>
+        </div>
+        <!-- AGREGAR ....BUSCAR -->
+        <div class="menu-item">
+          <a href="buscar.html">
+            <img src="img/buscar.png" alt="Icon" />
+            <span>Buscar</span>
+          </a>
+        </div>
+      </aside>
+    <!-- TITULO -->
+      <main class="main-content">
+        <div class="title">
+          <span>PlayList</span>
+        </div>
+
+
+        <div class="playlists">
+            
+            <div class="folder-container">
+              <div class="folder">
+                <img src="imgplaylist/folder.png" alt="Folder">
+                <p>Playlist 1</p>
+              </div>
+              <div class="folder">
+                <img src="imgplaylist/folder.png" alt="Folder">
+                <p>Playlist 2</p>
+              </div>
+              <div class="folder">
+                <img src="imgplaylist/folder.png" alt="Folder">
+                <p>Playlist 3</p>
+              </div>
+              <div class="folder">
+                <img src="imgplaylist/folder.png" alt="Folder">
+                <p>Playlist 4</p>
+              </div>
+              <div class="folder">
+                <img src="imgplaylist/folder.png" alt="Folder">
+                <p>Playlist 5</p>
+              </div>
+              <div class="folder">
+                <img src="imgplaylist/folder.png" alt="Folder">
+                <p>Playlist 6</p>
+              </div>
+              <div class="folder">
+                <img src="imgplaylist/folder.png" alt="Folder">
+                <p>Playlist 7</p>
+              </div>
+              <div class="folder">
+                <img src="imgplaylist/folder.png" alt="Folder">
+                <p>Playlist 8</p>
+              </div>
+              <div class="folder">
+                <img src="imgplaylist/folder.png" alt="Folder">
+                <p>Playlist 9</p>
+              </div>
+              <div class="folder">
+                <img src="imgplaylist/folder.png" alt="Folder">
+                <p>Playlist 10</p>
+              </div>
+              <div class="folder">
+                <img src="imgplaylist/folder.png" alt="Folder">
+                <p>Playlist 11</p>
+              </div>
+              <div class="folder">
+                <img src="imgplaylist/folder.png" alt="Folder">
+                <p>Playlist 12</p>
+              </div>
+              <div class="folder">
+                <img src="imgplaylist/folder.png" alt="Folder">
+                <p>Playlist 13</p>
+              </div>
+              <div class="folder">
+                <img src="imgplaylist/folder.png" alt="Folder">
+                <p>Playlist 14</p>
+              </div>
+              <div class="folder">
+                <img src="imgplaylist/folder.png" alt="Folder">
+                <p>Playlist 15</p>
+              </div>
+              <div class="folder">
+                <img src="imgplaylist/folder.png" alt="Folder">
+                <p>Playlist 16</p>
+              </div>
+              <div class="folder">
+                <img src="imgplaylist/folder.png" alt="Folder">
+                <p>Playlist 17</p>
+              </div>
+              <div class="folder">
+                <img src="imgplaylist/folder.png" alt="Folder">
+                <p>Playlist 18</p>
+              </div>
+              <div class="folder">
+                <img src="imgplaylist/folder.png" alt="Folder">
+                <p>Playlist 19</p>
+              </div>
+
+              <!-- Additional folder items can be added here -->
+            </div>
+
+        
+      </main>
+    </div>
+    <!-- FOOT -->
+    <footer class="footer">
+      <div class="footer-links">
+          <div class="contactanos">
+            <span>Contactanos</span>
+              <div class="imagenes-container">
+                <img class="imagen-footer" src="imgHF/whats.png" alt="Whatsapp">
+                <img class="imagen-footer" src="imgHF/telegram.png" alt="Telegram">
+              </div>
+          </div>
+        </div>
+        <div class="canales-atencion">
+          <span>Canales de atencion</span>
+            <div class="imagenes-container">
+              <img class="imagen-footer" src="imgHF/correo.png" alt="Correo">
+            </div>
+        </div>
+        <div class="social-media">
+          <span>Redes Sociales</span>
+            <div class="imagenes-container">
+              <img class="imagen-footer" src="imgHF/fb.png" alt="Facebook">
+              <img class="imagen-footer" src="imgHF/insta.png" alt="Instagram">
+            </div>
+        </div>
+      </div>
+      <div class="texto-footer">
+        <span>¿Quienes somos? </span>
+      </div>
+    </footer>
+    
+    
+  </body>
+</html>

@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+    <title>Musicoterapia</title>
+    <style>
+        /* Estilos adicionales para la interacción */
+        .genre:hover img,
+        .imagen-footer:hover,
+        .title:hover span,
+        .nav a:hover {
+            transform: scale(1.1); /* Aumenta el tamaño al pasar el cursor */
+        }
+        /* Fin de estilos adicionales para la interacción */
+
+        .imagen-usuario {
+            width: 30px;
+            height: 30px;
+        }
+
+        .body {
+            padding: 20px;
+        }
+
+        footer {
+    background-color: #59009A;
+    color: #ffffff;
+    padding: 10px;
+}
+
+.footer-container {
+    display: flex;
+    padding: 0;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+}
+.contact-item {
+    display: flex;
+    flex-direction: column;
+    padding-left: 10px;
+    padding-right: 10px;
+    align-items: center;
+    text-align: center;
+}
+
+.contact-item span {
+    margin-bottom: 5px;
+}
+
+.iconos {
+    display: flex;
+    justify-content: center;
+}
+
+.iconos a {
+    margin: 0 10px;
+}
+
+.iconos img {
+    width: 24px;
+    height: 24px;
+}
+
+.quienes-somos {
+    align-self: center;
+    color: #ffffff;
+    text-decoration: none;
+    margin-left: auto;
+}
+
+        body {
+            margin: 0;
+            font-family: "Roboto", sans-serif;
+        }
+
+        .navbar {
+            background-color: #fff;
+            padding: 1em;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            width: 65px;
+            height: 60px;
+            margin-right: 10px;
+        }
+
+        .navbar span {
+            color: #59009A;
+            font-weight: bold;
+            margin-right: 20px;
+        }
+
+        .servicios {
+            position: relative;
+        }
+
+        .submenu {
+            position: absolute;
+            background-color: #fff;
+            padding: 5px 5px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            display: none;
+            top: 40px;
+            left: 0;
+            width: auto;
+        }
+
+        .servicios:hover .submenu {
+            display: block;
+        }
+
+        .submenu ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .submenu li {
+            padding: 20px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .submenu li:hover {
+            background-color: #f0f0f0;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+        }
+
+        .imagen-usuario {
+            width: 30px;
+            height: 30px;
+        }
+
+        .body {
+            padding: 20px;
+        }
+
+        .container {
+            display: flex;
+            height: calc(100vh - 126px);
+        }
+
+        
+      /* Estilos del contenedor principal */
+      .container {
+        display: flex;
+        height: calc(100vh - 126px);
+      }
+
+      /* Estilos de la barra lateral */
+      .sidebar {
+        width: 25%;
+        background-color: #c7b7fe49;
+        padding: 20px;
+      }
+
+      /* Estilos de los elementos del menu en la barra lateral */
+      .sidebar .menu-item {
+        padding: 12px;
+        margin: 10px 0;
+        background: #fff;
+        border-radius: 15px;
+        transition: background 0.3s ease;
+      }
+
+      /* Estilos de los elementos del menú cuando están activos o al pasar el ratón */
+      .sidebar .menu-item.active,
+      .sidebar .menu-item:hover {
+        background: linear-gradient(#ffffff, #9c76c1);
+        box-shadow: 1px 5px 10px 0.1px rgb(145, 145, 145);
+      }
+
+      /* Estilos de las imágenes dentro de los elementos del menú */
+      .sidebar .menu-item img {
+        width: 24px;
+        height: 24px;
+        margin-right: 10px;
+      }
+
+      /* Estilos de los enlaces dentro de los elementos del menú */
+      .sidebar .menu-item a {
+        display: flex;
+        align-items: center;
+        color: inherit;
+        text-decoration: none;
+        justify-content: center;
+      }
+
+      /* Estilos del texto dentro de los elementos del menú */
+      .sidebar .menu-item span {
+        flex-grow: 1;
+        text-align: center;
+        font-size: 16px;
+      }
+
+      /* Estilos del contenido principal */
+      .main-content {
+        width: 75%;
+        padding: 20px;
+        overflow-y: auto;
+      }
+
+        .main-content {
+            width: 75%;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .title {
+            margin-right: 50px;
+            display: flex;
+            align-items: center;
+            font-size: 75px;
+            margin-bottom: 20px;
+            position: relative;
+            margin-left: 335px;
+            font-family: 'Roboto Slab', serif; /* Añadido para la fuente del título */
+        }
+
+        .title::after {
+            content: "";
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(to right, #ae67d7, #3e85e6);
+            position: absolute;
+            left: 109px;
+            border-radius: 60px;
+        }
+
+        .title span {
+            position: relative;
+            z-index: 1;
+            transition: color 0.3s;
+        }
+
+        .genres {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .genre {
+            width: calc(50% - 20px);
+            text-align: center;
+        }
+
+        .genre h3 {
+            font-family: 'Roboto Slab', serif;
+            margin-bottom: 10px;
+            margin-top: 10px; /* Añadido para un mejor espaciado */
+        }
+
+        .genre img {
+            width: 80%;
+            border-radius: 10px;
+            margin-bottom: 10px; /* Añadido para separar la imagen del título */
+            transition: transform 0.3s; /* Agregamos una transición para la transformación de la imagen */
+        }
+
+        /* Estilo para el título Álbum */
+        .main-content .title span {
+            font-family: 'Roboto', sans-serif; /* Cambia la fuente a Roboto */
+        }
+
+        /* Media Queries para hacer el sitio responsivo */
+        @media (max-width: 1024px) {
+            .title {
+                font-size: 60px;
+                margin-left: 20px;
+            }
+
+            .container {
+                flex-direction: column;
+            }
+
+            .sidebar, .main-content {
+                width: 100%;
+            }
+
+            .sidebar {
+                margin-bottom: 20px;
+            }
+
+            .genres .genre {
+                width: calc(50% - 10px);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .title {
+                font-size: 50px;
+                margin-left: 10px;
+            }
+
+            .genres .genre {
+                width: 100%;
+            }
+
+            .navbar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .navbar .logo, .navbar .user-info {
+                margin-bottom: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .title {
+                font-size: 40px;
+                margin-left: 5px;
+            }
+
+            .navbar {
+                padding: 0.5em;
+            }
+
+            .genres .genre img {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            
+            <img src="images/logo.png" alt="Logo de Atención Profesional">
+            <span>Musicoterapia</span>
+        </div>
+        <div class="user-info">
+            <span>Juanito Alimaña</span>
+            <img class="imagen-usuario" src="images/user.png" alt="Foto de perfil del usuario">
+        </div>
+    </nav>
+    </header>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="menu-item">
+                <a href="#">
+                    <img src="images/genero.png" alt="Icon">
+                    <span>Géneros</span>
+                </a>
+            </div>
+            <div class="menu-item active">
+                <a href="#">
+                    <img src="images/album.png" alt="Icon">
+                    <span>Álbum</span>
+                </a>
+            </div>
+            <div class="menu-item">
+                <a href="#">
+                    <img src="images/pod.png" alt="Icon">
+                    <span>Podcast</span>
+                </a>
+            </div>
+            <div class="menu-item">
+                <a href="#">
+                    <img src="images/patologia.png" alt="Icon">
+                    <span>Patologías</span>
+                </a>
+            </div>
+            <div class="menu-item">
+                <a href="#">
+                    <img src="images/binaural.png" alt="Icon">
+                    <span>Sonidos Binaurales</span>
+                </a>
+            </div>
+            <div class="menu-item">
+                <a href="#">
+                    <img src="images/playL.png" alt="Icon">
+                    <span>PlayList</span>
+                </a>
+            </div>
+            <div class="menu-item">
+                <a href="#">
+                    <img src="images/like.png" alt="Icon">
+                    <span>Me gusta</span>
+                </a>
+            </div>
+            <!-- AGREGAR ....BUSCAR -->
+            <div class="menu-item">
+                <a href="#">
+                    <img src="images/buscar boton.png" alt="Icon" />
+                    <span>Buscar</span>
+                </a>
+            </div>
+        </aside>
+        <main class="main-content">
+            <div class="title">
+                <span>Álbum</span>
+            </div>
+            <div class="genres">
+                <div class="genre">
+                    <img src="images/dormir.png" alt="Dormir">
+                    <h3>Dormir</h3>
+                </div>
+                <div class="genre">
+                    <img src="images/relajarse.png" alt="Relajarse">
+                    <h3>Relajarse</h3>
+                </div>
+                <div class="genre">
+                    <img src="images/concentrarse.png" alt="Concentrarse">
+                    <h3>Concentrarse</h3>
+                </div>
+                <div class="genre">
+                    <img src="images/play.png" alt="Play">
+                    <h3>Play</h3>
+                </div>
+                <div class="genre">
+                    <img src="images/meditar.png" alt="Meditar">
+                    <h3>Meditar</h3>
+                </div>
+            </div>
+        </main>
+    </div>
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="contact-item">
+                <span>Contáctanos</span>
+                <div class="iconos">
+                    <a href="#"><img src="images/whasap.png" alt="WhatsApp"></a>
+                </div>
+            </div>
+            <div class="contact-item">
+                <span>Canales de atención</span>
+                <div class="iconos">
+                    <a href="#"><img src="images/telegram.png" alt="Telegram"></a>
+                    <a href="#"><img src="images/email.png" alt="Email"></a>
+                </div>
+            </div>
+            <div class="contact-item">
+                <span>Redes sociales</span>
+                <div class="iconos">
+                    <a href="#"><img src="images/faceboock.png" alt="Facebook"></a>
+                    <a href="#"><img src="images/instagram.png" alt="Instagram"></a>
+                </div>
+            </div>
+            <a class="quienes-somos" href="#">¿Quiénes somos?</a>
+        </div>
+    </footer>
+</body>
+</html>

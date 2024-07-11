@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Musicoterapia</title>
+  <style>
+    /* Barra de navegacion y footer*/
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    /* Estilos generales para el cuerpo de la página */
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #fff;
+    }
+
+    /* Estilos del encabezado de la página */
+    .navbar {
+      background-color: #fff;
+      padding: 1em;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #ddd;
+      position: relative; /* Asegura que `z-index` funcione correctamente */
+      z-index: 1000; /* Asegura que esté por encima del resto del contenido */
+    }
+  
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+  
+    .logo img {
+      width: 65px;
+      height: 60px;
+      margin-right: 10px;
+    }
+  
+    .navbar span {
+      color: #59009A;
+      font-weight: bold;
+      margin-right: 20px;
+    }
+  
+    .servicios {
+      position: relative;
+    }
+  
+    .submenu {
+      position: absolute; /* Asegura que esté sobre el contenido */
+      background-color: #fff;
+      padding: 5px 5px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      display: none;
+      top: 40px;
+      left: 0;
+      width: auto;
+      z-index: 1001; /* Asegura que esté por encima del contenido `navbar` */
+    }
+  
+    .servicios:hover .submenu {
+      display: block;
+    }
+  
+    .submenu ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+  
+    .submenu li {
+      padding: 20px;
+      border-bottom: 1px solid #ddd;
+    }
+  
+    .submenu li:hover {
+      background-color: #f0f0f0;
+    }
+  
+    .user-info {
+      display: flex;
+      align-items: center;
+    }
+
+    .imagen-usuario {
+      width: 30px;
+      height: 30px;
+    }
+
+    /* Estilos del contenedor principal */
+    .container {
+      display: flex; /* Usa un diseño flexbox */
+      height: calc(100vh - 126px); /* Define la altura del contenedor menos la altura del encabezado */
+    }
+
+    /* Estilos de la barra lateral */
+    .sidebar {
+      width: 25%; /* Define el ancho de la barra lateral */
+      background-color: #c7b7fe49; /* Define el color de fondo */
+      padding: 20px; /* Añade un relleno */
+    }
+
+    /* Estilos de los elementos del menu en la barra lateral */
+    .sidebar .menu-item {
+      padding: 12px; /* Añade un relleno */
+      margin: 10px 0; /* Añade un margen vertical */
+      background: #fff; /* Define el color de fondo */
+      border-radius: 15px; /* Redondea las esquinas del cuadro */
+      transition: background 0.3s ease; /* Añade una transición para el cambio de fondo */
+    }
+
+    /* Estilos para enlaces específicos */
+    .menu-item a[href="Tus me gustas podcast.html"] {
+      color: #9c76c1; /* Define el color del texto para un enlace específico */
+    }
+
+    /* Estilos de los elementos del menú cuando están activos o al pasar el ratón */
+    .sidebar .menu-item.active,
+    .sidebar .menu-item:hover {
+      background: linear-gradient(#ffffff, #9c76c1); /* Define un fondo degradado en hover/activo */
+      box-shadow: 1px 5px 10px 0.1px rgb(145, 145, 145); /* Añade una sombra */
+    }
+
+    /* Estilos de las imágenes dentro de los elementos del menú */
+    .sidebar .menu-item img {
+      width: 24px; /* Define el ancho de la imagen */
+      height: 24px; /* Define la altura de la imagen */
+      margin-right: 10px; /* Añade un margen derecho */
+    }
+
+    /* Estilos de los enlaces dentro de los elementos del menú */
+    .sidebar .menu-item a {
+      display: flex; /* Usa un diseño flexbox */
+      align-items: center; /* Alinea los elementos verticalmente al centro */
+      color: inherit; /* Hereda el color del texto */
+      text-decoration: none; /* Elimina el subrayado de los enlaces */
+      justify-content: center; /* Centra el contenido horizontalmente */
+    }
+
+    /* Estilos del texto dentro de los elementos del menú */
+    .sidebar .menu-item span {
+      flex-grow: 1; /* Permite que el span ocupe el espacio restante */
+      text-align: center; /* Centra el texto */
+      font-size: 16px; /* Define el tamaño de la fuente */
+    }
+
+    /* Estilos del contenido principal */
+    .main-content {
+      width: 75%; /* Define el ancho del área de contenido principal */
+      padding: 20px; /* Añade un relleno */
+      overflow-y: auto; /* Añade una barra de desplazamiento vertical si el contenido desborda */
+    }
+
+    /* Estilos del título principal */
+    .title {
+      margin-right: 50px; /* Añade un margen derecho */
+      display: flex; /* Usa un diseño flexbox */
+      align-items: center; /* Alinea los elementos verticalmente al centro */
+      font-size: 75px; /* Define el tamaño de la fuente */
+      margin-bottom: 20px; /* Añade un margen inferior */
+      position: relative; /* Establece la posición relativa para el pseudo-elemento ::after */
+      margin-left: 300px; /* Añade un margen izquierdo */
+    }
+
+    /* Estilos del decorado del título */
+    .title::after {
+      content: ""; /* Crea un contenido vacío */
+      width: 105px; /* Define el ancho */
+      height: 105px; /* Define la altura */
+      background: linear-gradient(to right, #ae67d7, #3e85e6); /* Define un fondo degradado */
+      position: absolute; /* Posiciona absolutamente dentro del padre */
+      left: 330px; /* Posiciona a 330px desde la izquierda */
+      border-radius: 50px; /* Redondea las esquinas */
+    }
+
+    /* Estilos del texto dentro del título */
+    .title span {
+      position: relative; /* Posiciona relativamente */
+      z-index: 1; /* Establece el índice z en 1 para apilar por encima del pseudo-elemento ::after */
+    }
+
+    /* Estilos del contenedor de imágenes */
+    .image-container {
+      position: relative; /* Posiciona relativamente */
+      margin-bottom: 40px; /* Añade un margen inferior */
+      display: inline-block; /* Permite un diseño adecuado en bloque en línea */
+      width: 100%; /* Define el ancho al 100% del contenedor */
+      border: 1px solid #ccc; /* Añade un borde */
+      border-radius: 10px; /* Redondea las esquinas */
+      overflow: hidden; /* Asegura que los elementos hijos sean recortados */
+      background: #fff; /* Define el color de fondo */
+    }
+
+    /* Estilos de las imágenes */
+    .image-container img {
+      width: 100%; /* Define el ancho de la imagen al 100% */
+      height: auto; /* Mantiene la relación de aspecto */
+    }
+
+    /* Estilos del texto superpuesto */
+    .overlay-text {
+      position: absolute; /* Posiciona absolutamente dentro del padre */
+      text-align: center; /* Centra el texto */
+      right: 0; /* Posiciona a 0 desde la derecha */
+      padding: 20px; /* Añade un relleno */
+      font-size: 45px; /* Define el tamaño de la fuente */
+      line-height: 1.9; /* Define la altura de la línea */
+      color: #000000; /* Define el color del texto */
+      top: 30%; /* Posiciona al 30% desde la parte superior */
+      left: 70%; /* Posiciona al 70% desde la izquierda */
+    }
+
+    /* Estilos del texto superpuesto dentro del div */
+    .overlay-text div {
+      font-family: 'Arial', sans-serif; /* Define la fuente */
+    }
+
+    /* Estilos del texto para el botón de reproducción */
+    .play-text {
+      position: absolute; /* Posiciona absolutamente dentro del padre */
+      top: 50%; /* Posiciona al 50% desde la parte superior */
+      left: calc(40% + 10px); /* Calcula la posición */
+      transform: translate(-100%, 100%); /* Transforma el elemento */
+      font-size: 85px; /* Define el tamaño de la fuente */
+      color: white; /* Define el color del texto */
+      font-weight: bold; /* Define el peso de la fuente como negrita */
+      text-transform: uppercase; /* Transforma el texto a mayúsculas */
+    }
+
+    /* Estilos del botón de reproducción */
+    .image-button {
+      width: 200px; /* Define el ancho del botón */
+      height: 200px; /* Define la altura del botón */
+      background-image: url("img/botonPlay.png"); /* Define la imagen de fondo */
+      background-size: contain; /* Contiene la imagen de fondo */
+      background-repeat: no-repeat; /* Evita la repetición del fondo */
+      background-position: center; /* Centra la imagen de fondo */
+      border: none; /* Elimina el borde */
+      cursor: pointer; /* Muestra el cursor tipo puntero */
+      outline: none; /* Elimina el contorno */
+      position: absolute; /* Posiciona absolutamente dentro del padre */
+      bottom: 10%; /* Posiciona al 10% desde la parte inferior */
+      left: 35%; /* Posiciona al 35% desde la izquierda */
+      background-color: transparent; /* Define el color de fondo como transparente */
+    }
+
+    /* Estilos del botón para compartir */
+    .share-button {
+      position: absolute; /* Posiciona absolutamente dentro del padre */
+      bottom: 10px; /* Posiciona a 10px desde la parte inferior */
+      right: 10px; /* Posiciona a 10px desde la derecha */
+      background-color: #ffffff; /* Define el color de fondo */
+      color: #000000; /* Define el color del texto */
+      border: none; /* Elimina el borde */
+      padding: 5px 10px; /* Añade un relleno */
+      cursor: pointer; /* Muestra el cursor tipo puntero */
+      border-radius: 5px; /* Redondea las esquinas */
+      z-index: 1000; /* Define el índice z */
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Añade una sombra */
+      transition: background-color 0.3s; /* Añade una transición para el cambio de color de fondo */
+    }
+
+    /* Estilos del botón compartir al pasar el mouse */
+    .share-button:hover {
+      background-color: #eee; /* Cambia el color de fondo al pasar el ratón por encima */
+    }
+
+    /* Estilos de la barra para compartir */
+    .share-bar {
+      display: none; /* Oculta el elemento inicialmente */
+      position: absolute; /* Posiciona absolutamente dentro del padre */
+      bottom: 50px; /* Posiciona a 50px desde la parte inferior */
+      right: 10px; /* Posiciona a 10px desde la derecha */
+      background-color: rgba(0, 0, 0, 0.5); /* Define un fondo semitransparente */
+      border-radius: 10px; /* Redondea las esquinas */
+      padding: 5px 20px; /* Añade un relleno */
+      z-index: 1000; /* Define el índice z */
+    }
+
+    /* Estilos de las imágenes dentro de la barra para compartir */
+    .share-bar img {
+      width: 40px; /* Define el ancho de la imagen */
+      height: 40px; /* Define la altura de la imagen */
+      margin: 0 10px; /* Añade un margen horizontal */
+      cursor: pointer; /* Muestra el cursor tipo puntero */
+    }
+
+    /* Estilos del pie de página */
+    .footer {
+      background-color: #59009A; /* Define el color de fondo */
+      color: #fff; /* Define el color del texto */
+      padding: 35px; /* Añade un relleno */
+      display: flex; /* Usa un diseño flexbox */
+      justify-content: space-between; /* Espacia los elementos dentro del contenedor */
+      align-items: center; /* Alinea los elementos verticalmente al centro */
+      flex-wrap: wrap; /* Permite que los elementos se ajusten al contenido */
+    }
+
+    /* Estilos de los enlaces del pie de página */
+    .footer-links {
+      display: flex; /* Usa un diseño flexbox */
+      align-items: center; /* Alinea los elementos verticalmente al centro */
+      flex-wrap: wrap; /* Permite que los elementos se ajusten al contenido */
+    }
+
+    /* Estilos de la sección de contáctenos */
+    .contactanos,
+    .canales-atencion,
+    .social-media {
+      display: flex; /* Usa un diseño flexbox */
+      flex-direction: column; /* Coloca los hijos en una columna */
+      align-items: center; /* Centra los elementos horizontalmente */
+      margin-bottom: 20px; /* Añade un margen inferior */
+      font-family: 'Roboto Slab', serif; /* Define la fuente */
+    }
+
+    /* Estilos de los span dentro de la sección de contáctenos */
+    .contactanos span,
+    .canales-atencion span,
+    .social-media span {
+      margin-bottom: 10px; /* Añade un margen inferior */
+    }
+
+    /* Estilos del contenedor de imágenes */
+    .imagenes-container {
+      display: flex; /* Usa un diseño flexbox */
+      align-items: center; /* Alinea los elementos verticalmente al centro */
+    }
+
+    /* Estilos de las imágenes */
+    .imagen-footer {
+      width: 30px; /* Define el ancho de la imagen */
+      height: 30px; /* Define la altura de la imagen */
+    }
+
+    /* Estilos del texto en el pie de página */
+    .texto-footer {
+      text-align: right; /* Alinea el texto a la derecha */
+      align-items: center; /* Alinea los elementos verticalmente al centro */
+      font-family: 'Roboto Slab', serif; /* Define la fuente */
+    }
+  </style>
+  <script>
+    // Esta función alterna la visualización de la barra para compartir
+    function toggleShareBar(id) {
+      const shareBar = document.getElementById(id);
+      shareBar.style.display = shareBar.style.display === 'flex' ? 'none' : 'flex';
+    }
+
+    // Oculta todas las barras para compartir al hacer clic fuera del botón para compartir
+    window.onclick = function(event) {
+      if (!event.target.matches('.share-button')) {
+        const shareBars = document.querySelectorAll('.share-bar'); // Obtener todos los elementos de la barra para compartir
+        // Oculta cada barra para compartir estableciendo su estilo de visualización
+        shareBars.forEach(shareBar => {
+          shareBar.style.display = 'none';
+        });
+      }
+    }
+  </script>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo">
+      <img src="img/logo.png" alt="Logo de Atención Profesional">
+      <span>Musicoterapia</span>
+    </div>
+    <div class="servicios">
+      <span id="servicios-button">Servicios</span>
+      <div class="submenu">
+        <ul>
+          <li>Biblioterapia</li>
+          <li>Arteterapia</li>
+          <li>Musicoterapia</li>
+          <li>Ejercicios</li>
+        </ul>
+      </div>
+    </div>
+    <div class="user-info">
+      <span>Juanito Alimaña</span>
+      <img class="imagen-usuario" src="img/user.png" alt="Foto de perfil del usuario">
+    </div>
+  </nav>
+  <div class="container">
+    <aside class="sidebar">
+      <div class="menu-item">
+        <a href="#">
+          <img src="img/genero.png" alt="Icon">
+          <span>Géneros</span>
+        </a>
+      </div>
+      <div class="menu-item">
+        <a href="#">
+          <img src="img/album.png" alt="Icon">
+          <span>Álbum</span>
+        </a>
+      </div>
+      <div class="menu-item">
+        <a href="#">
+          <img src="img/pod.png" alt="Icon">
+          <span>Podcast</span>
+        </a>
+      </div>
+      <div class="menu-item">
+        <a href="#">
+          <img src="img/patologia.png" alt="Icon">
+          <span>Patologías</span>
+        </a>
+      </div>
+      <div class="menu-item">
+        <a href="#">
+          <img src="img/binaural.png" alt="Icon">
+          <span>Sonidos Binaurales</span>
+        </a>
+      </div>
+      <div class="menu-item">
+        <a href="#">
+          <img src="img/playL.png" alt="Icon">
+          <span>PlayList</span>
+        </a>
+      </div>
+      <div class="menu-item">
+        <a href="Tus me gustas podcast.html">
+          <img src="img/like.png" alt="Icon">
+          <span>Me gusta</span>
+        </a>
+      </div>
+      <div class="menu-item">
+        <a href="#">
+          <img src="img/buscar boton.png" alt="Buscar Icon">
+          <span>Buscar</span>
+        </a>
+      </div>
+    </aside>
+    <main class="main-content">
+      <div class="title">
+        <span>Mis podcast</span>
+      </div>
+
+      <div class="image-container">
+        <img src="img/mispodcast1.jpg" alt="Person Image">
+        <button class="image-button"></button>
+        <div class="play-text">Play</div>
+        <button class="share-button" onclick="toggleShareBar('share-bar1')">Compartir</button>
+        <div id="share-bar1" class="share-bar">
+          <a href="https://www.facebook.com/sharer/sharer.php?u=https://yourwebsite.com" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook"></a>
+          <a href="https://www.instagram.com" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram"></a>
+          <a href="https://api.whatsapp.com/send?text=https://yourwebsite.com" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp"></a>
+          <a href="https://telegram.me/share/url?url=https://yourwebsite.com&text=Check%20this%20out!" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram"></a>
+        </div>
+      </div>
+
+      <div class="image-container">
+        <img src="img\mispodcast2.jpg" alt="Person Image">
+        <button class="image-button"></button>
+        <div class="play-text">Play</div>
+        <button class="share-button" onclick="toggleShareBar('share-bar2')">Compartir</button>
+        <div id="share-bar2" class="share-bar">
+          <a href="https://www.facebook.com/sharer/sharer.php?u=https://yourwebsite.com" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook"></a>
+          <a href="https://www.instagram.com" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram"></a>
+          <a href="https://api.whatsapp.com/send?text=https://yourwebsite.com" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp"></a>
+          <a href="https://telegram.me/share/url?url=https://yourwebsite.com&text=Check%20this%20out!" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram"></a>
+        </div>
+      </div>
+
+      <div class="image-container">
+        <img src="img\mispodcast3.jpg" alt="Person Image">
+        <button class="image-button"></button>
+        <div class="play-text">Play</div>
+        <button class="share-button" onclick="toggleShareBar('share-bar3')">Compartir</button>
+        <div id="share-bar3" class="share-bar">
+          <a href="https://www.facebook.com/sharer/sharer.php?u=https://yourwebsite.com" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook"></a>
+          <a href="https://www.instagram.com" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram"></a>
+          <a href="https://api.whatsapp.com/send?text=https://yourwebsite.com" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp"></a>
+          <a href="https://telegram.me/share/url?url=https://yourwebsite.com&text=Check%20this%20out!" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram"></a>
+        </div>
+      </div>
+
+      <div class="image-container">
+        <img src="img\mispodcast4.jpg" alt="Person Image">
+        <button class="image-button"></button>
+        <div class="play-text">Play</div>
+        <button class="share-button" onclick="toggleShareBar('share-bar4')">Compartir</button>
+        <div id="share-bar4" class="share-bar">
+          <a href="https://www.facebook.com/sharer/sharer.php?u=https://yourwebsite.com" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook"></a>
+          <a href="https://www.instagram.com" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram"></a>
+          <a href="https://api.whatsapp.com/send?text=https://yourwebsite.com" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp"></a>
+          <a href="https://telegram.me/share/url?url=https://yourwebsite.com&text=Check%20this%20out!" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram"></a>
+        </div>
+      </div>
+
+    </main>
+  </div>
+  <footer class="footer">
+    <div class="footer-links">
+        <div class="contactanos">
+          <span>Contactanos</span>
+            <div class="imagenes-container">
+              <img class="imagen-footer" src="img/whasap.png" alt="Whatsapp">
+              <img class="imagen-footer" src="img/telegram.png" alt="Telegram">
+            </div>
+        </div>
+      </div>
+      <div class="canales-atencion">
+        <span>Canales de atencion</span>
+          <div class="imagenes-container">
+            <img class="imagen-footer" src="img/email.png" alt="Correo">
+          </div>
+      </div>
+      <div class="social-media">
+        <span>Redes Sociales</span>
+          <div class="imagenes-container">
+            <img class="imagen-footer" src="img/faceboock.png" alt="Facebook">
+            <img class="imagen-footer" src="img/instagram.png" alt="Instagram">
+          </div>
+      </div>
+    </div>
+    <div class="texto-footer">
+      <span>¿Quienes somos? </span>
+    </div>
+  </footer>
+</body>
+</html>
+  
