@@ -19,149 +19,153 @@
       padding: 20px;
     }
 
-    .footer {
-      background-color: #59009A;
-      color: #fff;
-      padding: 35px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap; /* Permite que los elementos se envuelvan si no caben en una sola fila */
-    }
+    footer {
+    background-color: #59009A;
+    color: #ffffff;
+    padding: 10px;
+}
 
-    .footer-links {
-      display: flex;
-      align-items: center;
-      flex-wrap: wrap; /* Envuelve los elementos si no caben en una sola fila */
-    }
+.footer-container {
+    display: flex;
+    padding: 0;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+}
+.contact-item {
+    display: flex;
+    flex-direction: column;
+    padding-left: 10px;
+    padding-right: 10px;
+    align-items: center;
+    text-align: center;
+}
 
-    .contactanos,
-    .canales-atencion,
-    .social-media {
-      display: flex;
-      flex-direction: column; /* Organiza los elementos en columnas */
-      align-items: center; /* Centra los elementos horizontalmente */
-      margin-bottom: 20px; /* Espacio inferior entre las secciones */
-      font-family: 'Roboto Slab', serif; /* Añadido para la fuente */
-    }
+.contact-item span {
+    margin-bottom: 5px;
+}
 
-    .contactanos span,
-    .canales-atencion span,
-    .social-media span {
-      margin-bottom: 10px; /* Espacio inferior del texto */
-    }
+.iconos {
+    display: flex;
+    justify-content: center;
+}
 
-    .imagenes-container {
-      display: flex;
-      align-items: center;
-    }
+.iconos a {
+    margin: 0 10px;
+}
 
-    .imagen-footer {
-      width: 30px; /* Ancho de las imágenes */
-      height: 30px; /* Altura de las imágenes */
-      transition: transform 0.3s ease, opacity 0.3s ease; /* Transición al pasar el cursor */
-    }
+.iconos img {
+    width: 24px;
+    height: 24px;
+}
 
-    .imagen-footer:hover {
-      transform: scale(1.2); /* Aumenta ligeramente el tamaño al pasar el cursor */
-      opacity: 0.7; /* Reduce la opacidad al pasar el cursor */
-    }
-
-    .imagen-interactiva {
-      transition: transform 0.3s ease, opacity 0.3s ease; /* Transición al pasar el cursor */
-    }
-
-    .imagen-interactiva:hover {
-      transform: scale(1.2); /* Aumenta ligeramente el tamaño al pasar el cursor */
-      opacity: 0.7; /* Reduce la opacidad al pasar el cursor */
-    }
-
-    .texto-footer {
-      text-align: right;
-      align-items: center;
-      font-family: 'Roboto Slab', serif; /* Añadido para la fuente */
-    }
-
+.quienes-somos {
+    align-self: center;
+    color: #ffffff;
+    text-decoration: none;
+    margin-left: auto;
+}
     body {
       margin: 0;
       font-family: "Roboto", sans-serif;
     }
+    
 
     body {
-      font-family: 'Roboto', sans-serif;
+        font-family: 'Roboto', sans-serif;
       background-color: #fff;
+      
     }
+  *{
+box-sizing: border-box;
+margin: 0;
+padding: 0;
+}
 
-    .navbar {
-      background-color: #fff;
-      padding: 1em;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 1px solid #ddd;
-    }
+body {
+font-family: 'Roboto', sans-serif;
+background-color: #fff;
+}
 
-    .logo {
-      display: flex;
-      align-items: center;
-    }
+.navbar {
+background-color: #fff;
+font-size: 24px;
+padding: 1em;
+height: 100px;
+width: auto;
+display: flex;
+justify-content: space-between;
+align-items: center;
+border-bottom: 1px solid #ddd;
+}
 
-    .logo img {
-      width: 65px;
-      height: 60px;
-      margin-right: 10px;
-    }
 
-    .navbar span {
-      color: #59009A;
-      font-weight: bold;
-      margin-right: 20px;
-    }
+.logo {
+display: flex;
+align-items: center;
+}
 
-    .servicios {
-      position: relative;
-    }
+.logo img {
+width: 65px;
+height: 60px;
+margin-right: 0px 10px 0px 10px;
+}
 
-    .submenu {
-      position: absolute;
-      background-color: #fff;
-      padding: 5px 5px;
-      border-radius: 5px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-      display: none;
-      top: 40px;
-      left: 0;
-      width: auto;
-    }
+.navbar span {
+color: #59009A;
+font-weight: bold;
+margin-right: 20px;
+}
 
-    .servicios:hover .submenu {
-      display: block;
-    }
+.servicios {
+position: relative;
+margin-left: auto;
+}
 
-    .submenu ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
+.submenu {
+position: absolute;
+background-color: #fff;
+padding: 5px 5px;
+border-radius: 5px;
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+display: none;
+top: 24px;
+left: 0px;
+width: auto;
+}
 
-    .submenu li {
-      padding: 20px;
-      border-bottom: 1px solid #ddd;
-    }
+.servicios:hover .submenu {
+display: flex;
+}
 
-    .submenu li:hover {
-      background-color: #f0f0f0;
-    }
+.submenu ul {
+list-style: none;
+padding: 0;
+margin: 0;
+}
 
-    .user-info {
-      display: flex;
-      align-items: center;
-    }
+.submenu li {
+padding: 20px;
+border-bottom: 1px solid #ddd;
+}
 
-    .imagen-usuario {
-      width: 30px;
-      height: 30px;
-    }
+.submenu li:hover {
+background-color: #f0f0f0;
+}
+
+.user-info {
+display: flex;
+align-items: center;
+margin-left: 0px;
+
+}
+
+.imagen-usuario{
+width: 30px;
+height: 30px;
+}
+
+
 
     .body {
       padding: 20px;
@@ -390,16 +394,27 @@
   </style>
 </head>
 <body>
-  <nav class="navbar">
-    <div class="logo">
-      <img src="images/logo.png" alt="Logo de Atención Profesional">
-      <span>Musicoterapia</span>
-    </div>
-    <div class="user-info">
-      <span>Juanito Alimaña</span>
-      <img class="imagen-usuario" src="images/user.png" alt="Foto de perfil del usuario">
-    </div>
-  </nav>
+    <nav class="navbar">
+        <div class="logo">
+            <img src="images/logo.png" alt="Logo de Alimentación">
+            <span>Musicoterapia</span>
+        </div>
+        <div class="servicios">
+            <span>Servicios</span>
+            <div class="submenu">
+                <ul>
+                    <li>Biblioterapia</li>
+                    <li>Arteterapia</li>
+                    <li>Musicoterapia</li>
+                    <li>Ejercicios</li>
+                </ul>
+            </div>
+        </div>
+        <div class="user-info">
+            <span>Juanito Alimaña</span>
+            <img class="imagen-usuario" src="images/user.png" alt="Foto de perfil del usuario">
+        </div>
+    </nav>
   </header>
   <div class="container">
     <aside class="sidebar">
@@ -480,30 +495,28 @@
     </main>
   </div>
   <footer class="footer">
-    <div class="footer-links">
-      <div class="contactanos">
-        <span>Contactanos</span>
-        <div class="imagenes-container">
-          <img class="imagen-footer" src="images/whasap.png" alt="Whatsapp">
-          <img class="imagen-footer" src="images/telegram.png" alt="Telegram">
+    <div class="footer-container">
+        <div class="contact-item">
+            <span>Contáctanos</span>
+            <div class="iconos">
+                <a href="#"><img src="images/whasap.png" alt="WhatsApp"></a>
+            </div>
         </div>
-      </div>
-    </div>
-    <div class="canales-atencion">
-      <span>Canales de atencion</span>
-      <div class="imagenes-container">
-        <img class="imagen-footer" src="images/email.png" alt="Correo">
-      </div>
-    </div>
-    <div class="social-media">
-      <span>Redes Sociales</span>
-      <div class="imagenes-container">
-        <img class="imagen-footer" src="images/faceboock.png" alt="Facebook">
-        <img class="imagen-footer" src="images/instagram.png" alt="Instagram">
-      </div>
-    </div>
-    <div class="texto-footer">
-      <span>¿Quienes somos? </span>
+        <div class="contact-item">
+            <span>Canales de atención</span>
+            <div class="iconos">
+                <a href="#"><img src="images/telegram.png" alt="Telegram"></a>
+                <a href="#"><img src="images/email.png" alt="Email"></a>
+            </div>
+        </div>
+        <div class="contact-item">
+            <span>Redes sociales</span>
+            <div class="iconos">
+                <a href="#"><img src="images/faceboock.png" alt="Facebook"></a>
+                <a href="#"><img src="images/instagram.png" alt="Instagram"></a>
+            </div>
+        </div>
+        <a class="quienes-somos" href="#">¿Quiénes somos?</a>
     </div>
   </footer>
 </body>

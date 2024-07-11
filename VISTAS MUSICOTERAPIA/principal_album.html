@@ -72,91 +72,99 @@
     text-decoration: none;
     margin-left: auto;
 }
-
-        body {
+body {
             margin: 0;
             font-family: "Roboto", sans-serif;
         }
 
-        .navbar {
-            background-color: #fff;
-            padding: 1em;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid #ddd;
-        }
+*.navbar{
+box-sizing: border-box;
+margin: 0;
+padding: 0;
+}
 
-        .logo {
-            display: flex;
-            align-items: center;
-        }
+body {
+font-family: 'Roboto', sans-serif;
+background-color: #fff;
+}
 
-        .logo img {
-            width: 65px;
-            height: 60px;
-            margin-right: 10px;
-        }
+.navbar {
+background-color: #fff;
+font-size: 24px;
+padding: 1em;
+height: 100px;
+width: auto;
+display: flex;
+justify-content: space-between;
+align-items: center;
+border-bottom: 1px solid #ddd;
+}
 
-        .navbar span {
-            color: #59009A;
-            font-weight: bold;
-            margin-right: 20px;
-        }
 
-        .servicios {
-            position: relative;
-        }
+.logo {
+display: flex;
+align-items: center;
+}
 
-        .submenu {
-            position: absolute;
-            background-color: #fff;
-            padding: 5px 5px;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-            display: none;
-            top: 40px;
-            left: 0;
-            width: auto;
-        }
+.logo img {
+width: 65px;
+height: 60px;
+margin-right: 0px 10px 0px 10px;
+}
 
-        .servicios:hover .submenu {
-            display: block;
-        }
+.navbar span {
+color: #59009A;
+font-weight: bold;
+margin-right: 20px;
+}
 
-        .submenu ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
+.servicios {
+position: relative;
+margin-left: auto;
+}
 
-        .submenu li {
-            padding: 20px;
-            border-bottom: 1px solid #ddd;
-        }
+.submenu {
+position: absolute;
+background-color: #fff;
+padding: 5px 5px;
+border-radius: 5px;
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+display: none;
+top: 24px;
+left: 0px;
+width: auto;
+}
 
-        .submenu li:hover {
-            background-color: #f0f0f0;
-        }
+.servicios:hover .submenu {
+display: flex;
+}
 
-        .user-info {
-            display: flex;
-            align-items: center;
-        }
+.submenu ul {
+list-style: none;
+padding: 0;
+margin: 0;
+}
 
-        .imagen-usuario {
-            width: 30px;
-            height: 30px;
-        }
+.submenu li {
+padding: 20px;
+border-bottom: 1px solid #ddd;
+}
 
-        .body {
-            padding: 20px;
-        }
+.submenu li:hover {
+background-color: #f0f0f0;
+}
 
-        .container {
-            display: flex;
-            height: calc(100vh - 126px);
-        }
+.user-info {
+display: flex;
+align-items: center;
+margin-left: 0px;
+
+}
+
+.imagen-usuario{
+width: 30px;
+height: 30px;
+}
 
         
       /* Estilos del contenedor principal */
@@ -344,9 +352,19 @@
 <body>
     <nav class="navbar">
         <div class="logo">
-            
-            <img src="images/logo.png" alt="Logo de Atención Profesional">
+            <img src="images/logo.png" alt="Logo de Alimentación">
             <span>Musicoterapia</span>
+        </div>
+        <div class="servicios">
+            <span>Servicios</span>
+            <div class="submenu">
+                <ul>
+                    <li>Biblioterapia</li>
+                    <li>Arteterapia</li>
+                    <li>Musicoterapia</li>
+                    <li>Ejercicios</li>
+                </ul>
+            </div>
         </div>
         <div class="user-info">
             <span>Juanito Alimaña</span>
@@ -425,7 +443,7 @@
                 </div>
                 <div class="genre">
                     <img src="images/play.png" alt="Play">
-                    <h3>Play</h3>
+                    <h3>Gamer</h3>
                 </div>
                 <div class="genre">
                     <img src="images/meditar.png" alt="Meditar">
