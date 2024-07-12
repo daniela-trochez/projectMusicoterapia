@@ -174,22 +174,28 @@
       margin-bottom: 20px;
       position: relative;
       margin-left: 100px;
+      
+ 
     }
 
     .title::after {
       content: "";
-      width: 105px;
-      height: 105px;
-      background: linear-gradient(to right, #ae67d7, #3e85e6);
-      position: absolute;
-      right: 55px;
-      border-radius: 50px;
+        width: 105px;
+        height: 105px;
+        background: linear-gradient(to right, #ae67d7, #3e85e6);
+        position: absolute;
+        left: 825px; /* Ajusta según tu diseño */
+        top: 50%; /* Centra verticalmente el círculo */
+        transform: translateY(-50%); /* Centra verticalmente el círculo */
+        border-radius: 50%;
+
     }
 
     .title span {
       position: relative;
       z-index: 1;
       white-space: nowrap;
+      margin: auto;
     }
 
     .image-container {
@@ -199,8 +205,6 @@
       /* Para que el contenedor se ajuste al contenido */
       text-align: center;
       /* Centrar contenido */
-      overflow-y: auto;
-      
 
     }
 
@@ -210,6 +214,9 @@
       height: auto;
       border-radius: 10px;
       
+    }
+    .contenedorPistas{
+      overflow-y: auto;
     }
 
     .corner-text {
@@ -484,7 +491,7 @@
   <div class="container">
     <aside class="sidebar">
       <div class="menu-item">
-        <a href="#">
+        <a href="../VISTAS MUSICOTERAPIA//principal_generos.html">
           <img src="img/genero.png" alt="Icon" />
           <span>Géneros</span>
         </a>
@@ -537,6 +544,9 @@
       <div class="title">
         <span>Sonidos Binaurales</span>
       </div>
+
+
+      
       <div class="image-container">
         <img src="imgBin/1.png" alt="fondoOndas" />
         <div class="corner-text">ACTIVA TU CEREBRO</div>
@@ -546,6 +556,8 @@
         </div>
       </div>
       <!-- Contenedor de pistas -->
+
+    <div class="contenedorPistas">
       <div class="image-container">
         <img src="imgBin/fondoselegidos.png" class="background-image" alt="fondoPistas" />
         <div class="track-list">
@@ -604,6 +616,8 @@
         </div>
 
       </div>
+    </div>
+      
     </main>
   </div>
   <!-- FOOT -->
